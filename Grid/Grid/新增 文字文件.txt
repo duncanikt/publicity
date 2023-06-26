@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+  <title>Update Form</title>
+</head>
+<body>
+  <h3>修改记录</h3>
+  <label for="field01">字段 01:</label>
+  <input type="text" id="field01" name="field01" value="">
+  <!-- 其他字段输入框 -->
+  <button onclick="saveUpdate()">儲存</button>
+
+  <script>
+    // 从URL参数中获取字段的值
+    var field01Value = decodeURIComponent(getParameterByName('field01'));
+    // 获取其他字段的值
+
+    // 将字段的值设置到输入框中
+    document.getElementById('field01').value = field01Value;
+    // 设置其他字段的值
+
+    function getParameterByName(name) {
+      name = name.replace(/[\[\]]/g, '\\$&');
+      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(window.location.href);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    function saveUpdate() {
+      var field01Value = document.getElementById('field01').value;
+      // 获取其他字段的值
+
+      // 发送修改请求，保存数据
+      var url = 'http://localhost:8081/update';
+      var data = {
+        field01: field01Value,
+        // 其他字段的数据
+      };
+
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+        .then(function(response) {
+          if (response.ok) {
+            // 修改成功，关闭窗口
+            window.close();
+          } else {
+            console.log('Update failed:', response.statusText);
+          }
+        })
+        .catch(function(error) {
+          console.log('Error:', error);
+        });
+    }
+  </script>
+</body>
+</html>

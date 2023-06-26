@@ -1,0 +1,225 @@
+
+
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" href="GridCss.css">
+  <script>console.log("Hello GridBranch01.html的head自己")</script>
+  <title>Table Example</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+  <script>console.log("Hello GridBranch01.html自己")</script>
+  <div>
+    <label for="searchInput">單號:</label>
+    <input type="text" id="searchInput" name="searchInput">
+    <label for="startDate">開始日期:</label>
+    <input type="date" id="startDate" name="startDate">
+    <label for="endDate">結束日期:</label>
+    <input type="date" id="endDate" name="endDate">
+    <button onclick="search()">查詢</button>
+    <button onclick="showUpdateForm()">修改</button>
+    <button onclick="addRecord()">增加</button>
+    <span style="padding-left:100px;"></span>
+    <button onclick="deleteRecord()">刪除</button>
+    <a>aaaate</a>
+  </div>
+  <br><br>
+  <table id="myTable">
+    <thead>
+      <tr>
+        <!-- 欄位標題 -->
+      </tr>
+    </thead>
+    <tbody>
+      <!--  資料行將以動態方式插入此處  -->
+
+    </tbody>
+  </table>
+
+
+</body>
+</html>
+
+<script>
+  // // 监听来自父窗口的消息
+  // window.addEventListener('message', function(event) {
+  //   // 获取父窗口发送的消息
+  //   var message = event.data;
+
+  //   if (message === 'fetchData') {
+  //     // 调用获取数据的函数
+  //     fetchData();
+  //   }
+  // });
+  fetchData()
+  function fetchData() {
+  console.log("Hello script02");
+  fetch('http://localhost:8081/data')
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      var table = document.getElementById('myTable');
+      var tableHeader = table.getElementsByTagName('thead')[0].getElementsByTagName('tr')[0];
+      var tableBody = table.getElementsByTagName('tbody')[0];
+
+      // 动态生成欄位標題
+      for (var key in data.recordset[0]) {
+        var th = document.createElement('th');
+        th.textContent = key;
+        tableHeader.appendChild(th);
+      }
+
+        // 动态生成数据行
+        for (var i = 0; i < data.recordset.length; i++) {
+          var rowData = data.recordset[i];
+          var newRow = tableBody.insertRow(i);
+
+          for (var key in rowData) {
+            var cell = newRow.insertCell();
+            var value = rowData[key];
+
+            // 转换日期字符串为 Date 对象
+            if (key === 'Date') {
+              value = new Date(value);
+            }
+
+            // 格式化日期
+            if (value instanceof Date) {
+              value = value.toLocaleDateString();
+            }
+
+            cell.textContent = value;
+          }
+        }
+
+    })
+    .catch(function(error) {
+      console.log('Error:', error);
+    });
+}
+
+
+</script> 
+
+
+
+<script> 
+    console.log("Hello 自己GridBranch01.html");
+    function search() 
+    {
+      console.log("Hello 成功使用自己的GridBranch01.html的search");
+      var searchInput = document.getElementById('searchInput').value;
+      var startDate = document.getElementById('startDate').value;
+      var endDate = document.getElementById('endDate').value;
+
+      // 根据输入的条件发送请求，获取数据
+      var url = 'http://localhost:8081/data?search=' + searchInput + '&startDate=' + startDate + '&endDate=' + endDate;
+
+      fetch(url)
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) 
+        {
+          var table = document.getElementById('myTable');
+          var tableHeader = table.getElementsByTagName('thead')[0].getElementsByTagName('tr')[0];
+          var tableBody = table.getElementsByTagName('tbody')[0];
+
+          // 清空表格内容
+          tableHeader.innerHTML = '';
+          tableBody.innerHTML = '';
+
+          // 动态生成列标题
+          for (var key in data.recordset[0]) {
+            var th = document.createElement('th');
+            th.textContent = key;
+            tableHeader.appendChild(th);
+          }
+
+          // 动态生成数据行
+          for (var i = 0; i < data.recordset.length; i++) {
+            var rowData = data.recordset[i];
+            var newRow = tableBody.insertRow(i);
+
+            for (var key in rowData) {
+              var cell = newRow.insertCell();
+              var value = rowData[key];
+
+              // 转换日期字符串为 Date 对象
+              if (key === 'Date') {
+                value = new Date(value);
+              }
+
+              // 格式化日期
+              if (value instanceof Date) {
+                value = value.toLocaleDateString();
+              }
+
+              cell.textContent = value;
+            }
+          }
+
+        })
+
+        .catch(function(error) {
+          console.log('Error:', error);
+        });
+    }
+
+  </script> 
+  <!-- <style>  li {
+    list-style: circle;
+    color:darkgoldenrod
+  }</style> -->
+
+
+
+
+
+<script> 
+function showUpdateForm() {
+  var searchInput = document.getElementById('searchInput').value;
+
+  // 根据输入的单号发送请求，获取数据
+  var url = 'http://localhost:8081/data?search=' + searchInput;
+
+  fetch(url)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      // 打开修改窗口并传递数据
+      openUpdateWindow(data.recordset[0]);
+    })
+    .catch(function(error) {
+      console.log('Error:', error);
+    });
+}
+
+function openUpdateWindow(data) {
+  var field01Value = data.field01;
+  // 获取其他字段的值
+
+  // 构建要传递给GridUpDate.html的URL
+  var url = 'GridUpDate.html';
+  url += '?field01=' + encodeURIComponent(field01Value);
+  // 添加其他字段的参数
+
+  // 在新窗口中打开GridUpDate.html
+  window.open(url, 'Update', 'width=400,height=300');
+}
+</script> 
+

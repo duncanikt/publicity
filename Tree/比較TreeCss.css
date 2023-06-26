@@ -1,0 +1,40 @@
+/* 树状结构样式 */
+ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    padding: 10px;
+    /* position: relative; */
+    /* left: 15%; */
+  }
+  
+  li .caret {
+    cursor: pointer;
+    /* position: absolute; */
+    /* left: 15%;
+    top: 1000%; */
+  }
+  
+  li .caret::before {
+    content: "\25B6";
+    color: rgb(58, 112, 149);
+    display: inline-block;
+    margin-right: 6px;
+  }
+
+  li .caret-down::before {
+    transform: rotate(90deg);
+  }
+  
+  /* 默认情况下隐藏所有嵌套的子项 */
+  .nested {
+    display: none ;
+  }
+  
+  /* 当项目展开时显示嵌套的子项 */
+  .active {
+    display: block;
+  }
+  

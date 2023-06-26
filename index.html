@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>分割畫面示例</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="dropdown">
+      <button class="dropbtn">資料表管理</button>
+      <div class="dropdown-content">
+        <a href="#">資料表 1</a>
+        <a href="#">資料表 2</a>
+        <a href="#">資料表 3</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">用戶管理</button>
+      <div class="dropdown-content">
+        <a href="#">用戶 1</a>
+        <a href="#">用戶 2</a>
+        <a href="#">用戶 3</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">報表生成</button>
+      <div class="dropdown-content">
+        <a href="#">報表 1</a>
+        <a href="#">報表 2</a>
+        <a href="#">報表 3</a>
+      </div>
+    </div>
+  </div>
+  <!-- 其他內容 -->
+  <br>
+
+  <div class="container">
+    <div class="sidebar">
+      <!-- 左側樹狀結構目錄 -->
+      <iframe src="Tree.html" frameborder="0" width="100%" height="100%"></iframe>
+    </div>
+    <!-- <div class="content" id="gridContentContainer" style="height: 100%;">
+      
+    </div> -->
+    
+    <div class="content" id="gridContentContainer">
+        <!-- 右側內容 -->
+        <!-- <iframe src="Tree/Tree.html" frameborder="0" width="100%" height="100%"></iframe> -->
+        <div id="iframeContainer">
+          <iframe id="pageFrame" src=""></iframe>
+        </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script src="GridUpDate.js"></script>
+  <script src="GridSearch.js"></script>
+
+  <script>
+// function loadPage(pageUrl) {
+//   console.log("Hello sindex.html  loadPage 01");
+//   var contentElement = document.getElementById('gridContentContainer');
+//   var xhr = new XMLHttpRequest();
+//   xhr.onreadystatechange = function() {
+//     if (xhr.readyState === 4 && xhr.status === 200) {
+//       contentElement.innerHTML = xhr.responseText;
+//     }
+//   };
+
+//   xhr.open('GET', pageUrl, true);
+//   xhr.send();
+// }
+
+
+  </script>
+
+  <!-- <script>
+    // 监听来自其他窗口的消息
+    window.addEventListener('message', function(event) {
+      if (event.data === 'fetchData') {
+        // 调用获取数据的函数
+        fetchData();
+      }
+    });
+  
+    function handleLinkClick01(event, linkUrl) {
+      event.preventDefault();
+  
+      var contentWindow = document.getElementById('gridContentContainer').contentWindow;
+  
+      // 向子窗口发送消息
+      contentWindow.postMessage(linkUrl, '*');
+    }
+  </script>
+   -->
+
+
+  <!-- <script>
+    // 在頁面載入完成後，取得兩個框架的參考
+    window.addEventListener('load', function() {
+      var senderFrame = document.getElementById('senderFrame');
+      var receiverFrame = document.getElementById('receiverFrame');
+
+      // 監聽發送者框架發送的消息
+      window.addEventListener('message', function(event) {
+        var message = event.data;
+        console.log('接收到消息:', message);
+
+        // 將消息轉發給接收者框架
+        receiverFrame.contentWindow.postMessage(message, '*');
+      });
+
+      // 監聽接收者框架發送的消息
+      receiverFrame.contentWindow.addEventListener('message', function(event) {
+        var message = event.data;
+        console.log('接收到消息:', message);
+
+        // 將消息轉發給發送者框架
+        senderFrame.contentWindow.postMessage(message, '*');
+      });
+    });
+  </script> -->
+
+  
+
+  <script>
+
+
+  function loadPage(pageUrl) {
+    console.log("Hello sindex.html  loadPage 02");
+    var pageFrame = document.getElementById('pageFrame');
+
+    // var absolutePageUrl = new URL(pageUrl, location.href).href; // 取得絕對路徑
+    var absolutePageUrl = new URL(pageUrl, window.location.origin + '/').href;
+    pageFrame.src = pageUrl;
+    fetchData();
+  }
+
+
+//   function fetchData() {
+//   console.log("Hello script02app這個是自己");
+//   fetch('http://localhost:8081/data')
+//     .then(function(response) {
+//       return response.json();
+//     })
+//     .then(function(data) {
+//       var table = document.getElementById('');
+//       var tableHeader = table.getElementsByTagName('thead')[0].getElementsByTagName('tr')[0];
+//       var tableBody = table.getElementsByTagName('tbody')[0];
+
+//       // 动态生成欄位標題
+//       for (var key in data.recordset[0]) {
+//         var th = document.createElement('th');
+//         th.textContent = key;
+//         tableHeader.appendChild(th);
+//       }
+
+//       // 动态生成資料行
+//       for (var i = 0; i < data.recordset.length; i++) {
+//         var rowData = data.recordset[i];
+//         var newRow = tableBody.insertRow(i);
+
+//         for (var key in rowData) {
+//           var cell = newRow.insertCell();
+//           cell.textContent = rowData[key];
+//         }
+//       }
+//     })
+//     .catch(function(error) {
+//       console.log('Error:', error);
+//     });
+// }
+
+  // 在父頁面中定義一個全局函數供子頁面調用
+  // function search() {
+  //   console.log('執行了 search 函數');
+  // }
+  </script>
+
+</body>
+</html>

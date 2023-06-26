@@ -1,0 +1,89 @@
+<link rel="stylesheet" href="TreeCss.css">
+<ul>
+  <br>
+  <li><a href="#" onclick="window.parent.loadPage('Grid/GridBranch01.html')">嘻哈音樂</a></li>
+
+  <li><a href="javascript:" class="caret"> 一、音樂類別 </a>
+    <ul class="nested">
+      <p></p>
+        <li><a href="javascript:" class="caret">流行音樂</a>
+          <ul class="nested">
+            <p></p>
+            <li><a href="javascript:">歌手</a></li>
+            <li><a href="javascript:">樂團</a></li>
+          </ul>
+        </li>
+      <li><a href="javascript:">古典音樂</a></li>
+      <li><a href="javascript:">嘻哈音樂</a></li>
+    </ul>
+  </li>
+
+
+  <li><a href="javascript:" class="caret"> 二、曲目列表 </a>
+    <ul class="nested">
+      <p></p>
+        <li><a href="javascript:" class="caret">最新曲目</a>
+          <ul class="nested">
+            <p></p>
+            <li><a href="#">單曲</a></li>
+            <li><a href="#">新專輯</a></li>
+          </ul>
+        </li>
+      <li><a href="#">熱門曲目</a></li>
+      <li><a href="#">推薦曲目</a></li>
+    </ul>
+  </li>
+  
+
+
+
+
+
+
+<!-- <p id="count"></p> -->
+
+
+<!--或者這種寫法 href="javascript: return false;"    'Grid/GridBranch01.html'-->
+<ul>
+  <!-- <li><a href="javascript:"  onclick="loadPage('Grid/GridBranch01.html')">Grid03</a></li> 
+  <li><a href="#" onclick="window.parent.handleLinkClick(event, 'Grid/GridBranch01.html')">Grid Branch 77</a></li>
+  <li><a href="javascript:"  onclick="loadPage('Grid/Grid/GridBranch01.html')">Grid04</a></li> 
+  <li><a href="javascript:" onclick="loadPage('Grid/GridBranch01.html')">Grid05</a></li>
+  <li><a href="" onclick="window.parent.loadPage('GridBranch01.html')">Grid Branch 77</a></li> -->
+  <li><a href="javascript:" onclick="window.parent.loadPage('Grid/GridBranch01.html')">Grid Branch 77</a></li>
+
+</ul>
+<!-- <ul>
+  <a href="Grid/Grid.html">測試長期的問題是否進入script</a>
+</ul> -->
+<!-- <div id="content"></div> -->
+<!-- 
+<script>
+function loadPage(pageUrl) {
+  var contentElement = parent.document.getElementById('gridContentContainer');
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      contentElement.innerHTML = xhr.responseText;
+    }
+  };
+
+
+  xhr.open('GET', absolutePageUrl, true);
+  xhr.send();
+}
+
+</script> -->
+
+
+
+
+
+<script src="TreeJs.js"></script>
+<script>
+window.onload = function() {
+  window.parent.loadPage('Grid/GridBranch01.html');
+};
+
+</script>
+
