@@ -1,3 +1,11 @@
+#toggleTree {
+  margin: 0;
+  padding: 0;
+  margin-top: -0.3cm;
+  margin-bottom: -0.3cm;
+  /* margin-left: 0.1cm; */
+  /* border: none; 新增這行來消除邊框 */
+}
 .container {
   display: flex;
   /* display: grid; */
@@ -9,11 +17,11 @@
 
 .sidebar {
   /* width: 30%; */
-  flex: 15%;
-  background-color: #c3b1b1;
+  flex: 14%;
+  background-color: #ddd2d2; /* #c3b1b1; */
   margin-top: -0.3cm;
   margin-bottom: -0.3cm;
-  margin-left: -0.3cm;
+  margin-left: -0.2cm;
   /* position: relative; */
   /* position: absolute; */
 
@@ -32,7 +40,12 @@
   margin-right: -0.3cm;
 }
 
-
+.sidebar.collapsed {
+  flex: 0;
+  max-width: 0;
+  overflow: hidden;
+  transition: max-width 0.3s ease-out;
+}
 
 
 
@@ -45,7 +58,7 @@
 
 
 .topbar {
-  background-color: #f1f1f1;
+  background-color: #f1f1f1; /* #f1f1f1; */
   padding: 10px;
   margin-top: -0.3cm;
   margin-bottom: -0.3cm;

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>註冊</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 30px;
+    }
+
+    form {
+      margin-top: 20px;
+      display: inline-block;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 250px;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>註冊</h1>
+  <form id="registerForm">
+    <label for="username">使用者名稱13：</label>
+    <input type="text" id="username" required>
+
+    <label for="password">密碼：</label>
+    <input type="password" id="password" required>
+    <!-- 放置驗證器 -->
+    <div
+    class="g-recaptcha"
+    data-sitekey="6LdsYVEnAAAAADxRZ3lwmjihG2xIMwlU7K2P71Zf"
+    data-theme="light" data-size="normal"
+    data-callback="verify"
+    data-expired-callback="expired"
+    data-error-callback="error">
+    </div>
+    
+    <!-- <button
+    class="g-recaptcha"
+    data-sitekey="6Ldq_FAnAAAAAGZvTnh8nCtUwyDqMt6IsQYecHxh"
+    data-action="firstKey"
+    data-callback="verifyCallback">送出</button> -->
+    
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </form>
+  <script>
+
+//   <script src="https://www.google.com/recaptcha/api.js?render=6Ldq_FAnAAAAAGZvTnh8nCtUwyDqMt6IsQYecHxh"></script>
+   <script>
+//     // 提交表單之前，檢查驗證碼是否通過
+//     document.getElementById('registerForm').addEventListener('submit', async (event) => {
+//       event.preventDefault();
+
+//       // 請求 reCAPTCHA 驗證
+//       const token = await grecaptcha.execute('6Ldq_FAnAAAAAGZvTnh8nCtUwyDqMt6IsQYecHxh', { action: 'submit' });
+
+//       // 驗證碼通過，提交表單
+//       const username = document.getElementById('username').value;
+//       const password = document.getElementById('password').value;
+
+//       try {
+//         const requestOptions = {
+//           method: 'POST',
+//           headers: {
+//             'Content-Type': 'application/json'
+//           },
+//           body: JSON.stringify({
+//             username,
+//             password,
+//             'g-recaptcha-response': token
+//           })
+//         };
+//         const submitResponse = await fetch('https://i75birth.ddns.net/submit-form', requestOptions);
+
+//         if (submitResponse.ok) {
+//           alert('註冊成功！');
+//           // 在此可以導向登入頁面或其他操作
+//           console.log('查:', '成功？');
+//         } else {
+//           alert('註冊失敗！請檢查輸入的資料。');
+//         }
+//       } catch (error) {
+//         console.error('註冊失敗:', error);
+//         alert('註冊失敗！請稍後再試。');
+//       }
+//     });
+
+
+
+
+function verify() {          alert('註冊成功！');}
+
+
+// 把 token 送到後端做驗證
+function verifyCallback(token) {
+
+let formData = new FormData();
+formData.append('token', token);
+var uriGAS = "https://i75birth.ddns.net/submit-form";
+
+fetch(uriGAS, {
+  method: "POST",
+  body: formData
+}).then(response => response.json())
+  .then(result => {
+    if(result.success) {
+        alert('進入');
+
+      // 分數大過 0.5，才當作是真實人類操作
+      if(result.score > 0.5) {
+        // 判斷是真人時要做的事
+        alert('註冊成功！');
+      }
+      // 分數低於 0.5，當作機器人
+      else {
+        // 判斷是機器人時要做的事
+        alert('註冊失敗！判斷是機器人。');
+
+      }
+    } else {
+        alert('找問題01');
+        window.alert(result['error-codes'][0])
+    }
+  })
+  .catch(err => {
+    alert('找問題02');
+      window.alert(err)
+  })
+
+}
+
+
+
+
+
+
+
+  </script>
+</body>
+</html>

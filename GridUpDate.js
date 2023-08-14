@@ -3,6 +3,7 @@ function showUpdateForm() {
     var searchInput = document.getElementById('searchInput').value;
 
     // 根据输入的单号发送请求，获取数据
+    console.log("錯誤02");
     var url = 'http://localhost:8081/data?search=' + searchInput;
 
     fetch(url)

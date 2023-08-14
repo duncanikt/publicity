@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>分割畫面示例</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="dropdown">
+      <button class="dropbtn">資料表管理</button>
+      <div class="dropdown-content">
+        <a href="#">資料表 1</a>
+        <a href="#">資料表 2</a>
+        <a href="#">資料表 3</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">用戶管理</button>
+      <div class="dropdown-content">
+        <a href="#">用戶 1</a>
+        <a href="#">用戶 2</a>
+        <a href="#">用戶 3</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">報表生成</button>
+      <div class="dropdown-content">
+        <a href="#">報表 1</a>
+        <a href="#">報表 2</a>
+        <a href="#">報表 3</a>
+      </div>
+    </div>
+  </div>
+  <!-- 其他內容 -->
+  <br>
+
+  <div class="container">
+    <div class="sidebar">
+      <!-- 左側樹狀結構目錄 -->
+      <iframe src="Tree.html" frameborder="0" width="100%" height="100%"></iframe>
+    </div>
+    <!-- <div class="content" id="gridContentContainer" style="height: 100%;">
+      
+    </div> -->
+    <button id="toggleTree" onclick="toggleTree()"><</button>
+
+    <div class="content" id="gridContentContainer">
+        <!-- 右側內容 -->
+        <!-- <iframe src="Tree/Tree.html" frameborder="0" width="100%" height="100%"></iframe> -->
+        <div id="iframeContainer">
+          <iframe id="pageFrame" src=""></iframe>
+        </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script src="GridUpDate.js"></script>
+  <script src="GridSearch.js"></script>
+
+  <script>
+    // Function to submit the form and handle backend validation
+    function submitForm() {
+      alert('前後端伺服器Google reCAPTCHA驗證成功！');
+      window.location.href = 'index02.html';
+    }
+
+    // Function to submit the form and handle backend validation
+    // ...（前面的代码，不包括verifyCallback函数）
+
+    // 把 token 送到後端做驗證
+    function verifyCallback(token) {
+      // 发送 POST 请求到后端进行验证
+      fetch('https://i75birth.ddns.net/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token: token }),
+      })
+        .then(response => response.json())
+        .then(result => {
+          if (result.success) {
+            // 验证成功，继续处理表单提交
+            submitForm();
+          } else {
+            // 验证失败，给出错误提示
+            alert('註冊失敗！後端Google reCAPTCHA驗證沒過。');
+          }
+        })
+        .catch(error => {
+          console.error('註冊失敗:', error);
+          alert('註冊失敗！請稍後再試。');
+        });
+    }
+  </script>
+
+  <script>
+  function toggleTree() {
+    var sidebar = document.querySelector('.sidebar');
+    sidebar.classList.toggle('collapsed');
+  }
+  function loadPage(pageUrl) {
+    console.log("Hello sindex.html  loadPage 02");
+    var pageFrame = document.getElementById('pageFrame');
+
+    // var absolutePageUrl = new URL(pageUrl, location.href).href; // 取得絕對路徑
+    var absolutePageUrl = new URL(pageUrl, window.location.origin + '/').href;
+    pageFrame.src = pageUrl;
+  }
+  </script>
+
+</body>
+</html>

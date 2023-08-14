@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>分割畫面示例01</title>
+  <meta charset="UTF-8">
+  <script>
+
+    window.addEventListener('beforeunload', () => {
+      // localStorage.removeItem('jwt'); // 或其他存储方式的清除操作
+  // 获取会话存储中的令牌
+  const token = sessionStorage.getItem('jwt');
+  // console.log('令牌值：',sessionStorage.getItem('jwt'));
+
+  // console.log('令牌值：',token);
+  // 执行其他操作（例如发送令牌过期请求等）
+  if (token) {
+    // 删除会话存储中的令牌
+    // sessionStorage.removeItem('jwt');
+    // localStorage.removeItem('jwt');
+  }
+
+
+    });
+// 檢查是否存在令牌
+console.log("檢查開始");
+const token = sessionStorage.getItem('jwt');
+console.log('令牌值：',token);
+const expirationTime = localStorage.getItem('expirationTime');
+const currentTime = Math.floor(Date.now()); // 获取当前时间的时间戳（单位：秒）
+console.log(currentTime,expirationTime);
+
+if (!token) {
+  window.location.href = 'index.html';
+  alert('未登入');
+  // 令牌不存在，導向到登入畫面
+} else {
+  if (!expirationTime) {
+    // 没有到期时间信息，可能需要重新登录或处理其他情况
+    alert('未找到到期时间信息，请重新登录。');
+    window.location.href = 'index.html';
+
+  }
+  if (expirationTime < currentTime) {
+    // 令牌已过期，需要重新登录
+    window.location.href = 'index.html';
+    localStorage.removeItem('jwt'); // 或其他存储方式的清除操作
+    alert('登入時間已過期，請重新登入。');
+  } else {
+    // 令牌存在且未过期，继续执行其他操作
+    // ...
+  }
+}
+
+console.log("檢查結束");
+
+  </script>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="dropdown">
+      <button class="dropbtn">資料表管理</button>
+      <div class="dropdown-content">
+        <a href="#">資料表 1</a>
+        <a href="#">資料表 2</a>
+        <a href="#">資料表 3</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">用戶管理</button>
+      <div class="dropdown-content">
+        <a href="#">用戶 1</a>
+        <a href="#">用戶 2</a>
+        <a href="#">用戶 3</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">報表生成</button>
+      <div class="dropdown-content">
+        <a href="#">報表 1</a>
+        <a href="#">報表 2</a>
+        <a href="#">報表 3</a>
+      </div>
+    </div>
+  </div>
+  <!-- 其他內容 -->
+  <br>
+
+  <div class="container">
+    <div class="sidebar">
+      <!-- 左側樹狀結構目錄 -->
+      <iframe src="Tree.html" frameborder="0" width="100%" height="100%"></iframe>
+    </div>
+    <!-- <div class="content" id="gridContentContainer" style="height: 100%;">
+      
+    </div> -->
+    <button id="toggleTree" onclick="toggleTree()"><</button>
+
+    <div class="content" id="gridContentContainer">
+        <!-- 右側內容 -->
+        <!-- <iframe src="Tree/Tree.html" frameborder="0" width="100%" height="100%"></iframe> -->
+        <div id="iframeContainer">
+          <iframe id="pageFrame" src=""></iframe>
+        </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+  <script src="GridUpDate.js"></script>
+  <script src="GridSearch.js"></script>
+  <script>
+
+
+
+  // 在 index02.html 的 JavaScript 中
+  document.addEventListener('DOMContentLoaded', function() {
+    // 檢查是否存在令牌
+    const token = localStorage.getItem('jwt');
+
+    if (!token) {
+      // 令牌不存在，導向到登入畫面
+      // openWindow03();
+    }
+  });
+
+
+
+
+  function toggleTree() {
+    var sidebar = document.querySelector('.sidebar');
+    sidebar.classList.toggle('collapsed');
+  }
+  function loadPage(pageUrl) {
+    console.log("Hello sindex.html  loadPage 02");
+    var pageFrame = document.getElementById('pageFrame');
+
+    // var absolutePageUrl = new URL(pageUrl, location.href).href; // 取得絕對路徑
+    var absolutePageUrl = new URL(pageUrl, window.location.origin + '/').href;
+    pageFrame.src = pageUrl;
+    // fetchData();
+  }
+
+  function handleLogoutID(pageUrl) {
+    console.log("Hello sindex.html  loadPage 02");
+    handleLogout();
+    // window.location.href = 'index.html';
+
+  }
+
+
+
+
+
+
+
+// 登出功能
+function handleLogout() {
+  // 清除本地儲存的JWT令牌
+  localStorage.removeItem('jwt');
+  sessionStorage.removeItem('jwt');
+
+  // 發送登出請求到後端
+  fetch('https://i75birth.ddns.net/logout', {
+    method: 'POST',
+  })
+  .then(response => {
+    if (response.ok) {
+      // 登出成功，可以根據需要執行其他操作，例如重新導向至登入頁面
+      window.location.href = 'index.html'; // 將登入頁面的URL改成'index.html'
+    } else {
+      console.error('登出失敗:', response.status, response.statusText);
+      alert('登出失敗，請稍後再試。');
+    }
+  })
+  .catch(error => {
+    console.error('登出失敗:', error);
+    alert('登出失敗，請稍後再試。');
+  });
+}
+
+
+  </script>
+
+</body>
+</html>
