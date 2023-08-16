@@ -1,0 +1,142 @@
+input[type="number"] {
+  width: 45px; /* 設定您想要的寬度，根據需求調整 */
+}
+#addTable .col-narrow {
+      border-collapse: collapse;
+      width: 90px;  /* width: 90%; */
+      table-layout: fixed;
+      box-sizing: border-box;
+}
+
+
+#addTable tbody tr:last-child td {
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}
+
+
+
+.DetailHide {
+    display: none;
+    }
+
+
+    input[readonly] {
+      background-color: rgb(162, 145, 145);
+    }
+    #myTable {
+      border-collapse: collapse;
+      width: 100px;  /*width: 90%; */
+      table-layout: fixed;
+      box-sizing: border-box;
+    }
+    #myTable td input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    }
+    #myTable th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+
+    body {
+      background-color: rgb(175, 211, 241);
+      padding: 20px;
+    }
+
+    tr.selected {
+      background-color: yellow;
+    }
+
+    .button-container {
+      display: none;
+    }
+
+    .button-container button {
+      margin-right: 5px;
+    }
+
+    .select-cell {
+      border-top: 1px solid transparent;
+      border-bottom: 1px solid transparent;
+      border-right: 1px solid transparent;
+      /* width: 10px;    /*單獨調整第6欄的寬度 */
+     /*  text-align: center; 文字置中 */
+    }
+
+    .hidden {
+    display: none;
+    }
+
+
+    .detail-table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  .detail-table th,
+  .detail-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+
+
+  .modal-container {
+    position: relative; /* 添加此行，将父元素的position设为relative */
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: auto;
+    /* overflow:overlay; */
+  }
+  .modal {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    padding-top: 100px;
+    /* left: 0; */
+    /* top: 0; */
+    width: 420px;
+    height: 100%;
+    overflow: auto;
+    /* background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4); */
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    /* margin: auto; */
+    padding: 50px;
+    border: 1px solid #888;
+    width: 300px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .detailsText {
+    position: absolute;
+    top: 1px;
+    left: 10px;
+  }
+
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }

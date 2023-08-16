@@ -23,7 +23,6 @@
     .then(response => response.json())
     .then(data => {
       console.log('后端返回的数据:', data);
-
         // 将令牌存储在 localStorage 中
         // localStorage.setItem('jwt', data.token); //跟下面一行兩種寫法都可以
         const token = data.token;
@@ -31,12 +30,6 @@
         sessionStorage.setItem('jwt', token);
         localStorage.setItem('jwt', token);
         localStorage.setItem('expirationTime', expirationTime); // 保存到期时间 
-
-
-
-
-
-
         // 跳转到 index02.html 页面
         window.location.href = 'https://duncanikt.github.io/exhibit/index02.html';
     })
