@@ -2,7 +2,7 @@ a {
   text-decoration: none;
 }
 
-/* 树状结构样式 */
+/* 樹狀結構樣式 */
 ul {
   list-style-type: none;
   padding: 0;
@@ -30,7 +30,7 @@ li .caret-down::before {
   transform: rotate(90deg);
 }
 
-/* 默认情况下隐藏所有嵌套的子项 */
+/* 預設情況下隱藏所有嵌套的子項 */
 .nested {
   display: none;
 }
@@ -47,7 +47,6 @@ li > ul.nested > li > ul.nested > li::before {
 }
 
 
-
 /* li ul.nested ul.nested > li > a.caret::before {
   content: "\25B6";
   color: rgb(58, 112, 149);
@@ -56,8 +55,9 @@ li > ul.nested > li > ul.nested > li::before {
 } */
 
 
-
-/* 当项目展开时显示嵌套的子项 */
+/* 當專案展開時顯示嵌套的子項 */
 .active {
   display: block;
 }
+
+

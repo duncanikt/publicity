@@ -7,12 +7,12 @@
 </head>
 <body>
   <script>
-    // 获取 URL 参数中的授权码
+    // 獲取 URL 參數中的授權碼
     const urlParams = new URLSearchParams(window.location.search);
     const authorizationCode = urlParams.get('code');
     console.log('Author 授權碼:', authorizationCode);
 
-    // 将授权码发送给后端
+    // 將授權碼發送給後端
     fetch('https://i75birth.ddns.net/auth/google/callback', {
       method: 'POST',
       headers: {
@@ -22,23 +22,24 @@
     })
     .then(response => response.json())
     .then(data => {
-      console.log('后端返回的数据:', data);
-        // 将令牌存储在 localStorage 中
+      console.log('後端返回的資料:', data);
+        // 將權杖存儲在 localStorage 中
         // localStorage.setItem('jwt', data.token); //跟下面一行兩種寫法都可以
         const token = data.token;
-        const expirationTime = data.expirationTime; // 从后端响应中获取到期时间
+        const expirationTime = data.expirationTime; // 從後端回應中獲取到期時間
         sessionStorage.setItem('jwt', token);
         localStorage.setItem('jwt', token);
-        localStorage.setItem('expirationTime', expirationTime); // 保存到期时间 
-        // 跳转到 index02.html 页面
+        localStorage.setItem('expirationTime', expirationTime); // 保存到期時間 
+        // 跳轉到 index02.html 頁面
         window.location.href = 'https://duncanikt.github.io/exhibit/index02.html';
     })
     .catch(error => {
-      console.error('发生错误:', error);
+      console.error('發生錯誤:', error);
     });
   </script>
 </body>
 </html>
+
 
 
 

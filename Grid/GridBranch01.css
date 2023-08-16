@@ -47,7 +47,6 @@ tr.selected {
 display: none;
 }
 
-
 .detail-table {
 margin-top: 20px;
 border-collapse: collapse;
@@ -62,9 +61,8 @@ padding: 8px;
 text-align: left;
 }
 
-
 .modal-container {
-position: relative; /* 添加此行，将父元素的position设为relative */
+position: relative; /* 添加此行，將父元素的position設為relative */
 top: 0;
 left: 0;
 width: auto;
@@ -117,3 +115,4 @@ color: #000;
 text-decoration: none;
 cursor: pointer;
 }
+

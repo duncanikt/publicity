@@ -8,7 +8,6 @@ input[type="number"] {
       box-sizing: border-box;
 }
 
-
 #addTable tbody tr:last-child td {
   border-left: none;
   border-right: none;
@@ -16,11 +15,9 @@ input[type="number"] {
 }
 
 
-
 .DetailHide {
     display: none;
     }
-
 
     input[readonly] {
       background-color: rgb(162, 145, 145);
@@ -70,7 +67,6 @@ input[type="number"] {
     display: none;
     }
 
-
     .detail-table {
     margin-top: 20px;
     border-collapse: collapse;
@@ -85,9 +81,8 @@ input[type="number"] {
     text-align: left;
   }
 
-
   .modal-container {
-    position: relative; /* 添加此行，将父元素的position设为relative */
+    position: relative; /* 添加此行，將父元素的position設為relative */
     top: 0;
     left: 0;
     width: 300px;
@@ -140,3 +135,4 @@ input[type="number"] {
     text-decoration: none;
     cursor: pointer;
   }
+

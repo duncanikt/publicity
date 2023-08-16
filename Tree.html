@@ -4,7 +4,6 @@
   <!--  href="javascript:" 可改成href="#"點擊會聯動畫面 -->
   <li><a href="javascript:" onclick="window.parent.loadPage('Grid/GridBranch01.html')">作品展示</a></li>
 
-
   <li><a href="javascript:" class="caret"> 一、樹狀列表 </a> <!--   href="javascript:" -->
     <ul class="nested">
       <p></p>
@@ -19,7 +18,6 @@
       <li><a >二頁面</a></li>
     </ul>
   </li>
-
 
   <li><a href="javascript:" class="caret"> 二、樹狀列表 </a>
     <ul class="nested">
@@ -42,9 +40,7 @@
   
 
 
-
 <!-- <p id="count"></p> -->
-
 
 <!--或者這種寫法 href="javascript: return false;"    'Grid/GridBranch01.html'-->
 <ul>
@@ -71,7 +67,6 @@ function loadPage(pageUrl) {
     }
   };
 
-
   xhr.open('GET', absolutePageUrl, true);
   xhr.send();
 }
@@ -81,7 +76,7 @@ function loadPage(pageUrl) {
 
 
 
-
 <script src="Tree.js"></script>
+
 
 

@@ -1,7 +1,6 @@
 
 
 
-
 window.onload = function() {
   window.parent.loadPage('Grid/GridBranch01.html');
 
@@ -45,7 +44,7 @@ window.onload = function() {
 
 // 登出功能
 function handleLogout() {
-  // 清除本地儲存的JWT令牌
+  // 清除本地儲存的JWT權杖
   localStorage.removeItem('jwt');
   
   // 發送登出請求到後端
@@ -67,3 +66,5 @@ function handleLogout() {
     alert('登出失敗，請稍後再試。');
   });
 }
+
+

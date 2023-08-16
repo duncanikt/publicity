@@ -12,7 +12,7 @@
   height: 100vh; /* 設置父容器的高度為視窗的高度 */
   /* width: 100%; */
 /*  align-items: center; /* 垂直置中 */
-/* justify-content: center; /*水平置中 */
+/* justify-content: center; /*水準置中 */
 }
 
 .sidebar {
@@ -46,7 +46,6 @@
   overflow: hidden;
   transition: max-width 0.3s ease-out;
 }
-
 
 
 
@@ -91,7 +90,6 @@
   display: block;
 }
 
-
 .dropbtn::before {
   content: "\25B6";
   color: rgb(0, 0, 0);
@@ -103,7 +101,6 @@
 .dropdown:hover .dropbtn::before {
   transform: rotate(90deg); /* 滑鼠懸停時旋轉90度 */
 }
-
 
 #iframeContainer {
   width: 100%;
@@ -119,3 +116,5 @@
   height: 100%;
   border: none;
 }
+
+

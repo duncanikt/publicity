@@ -1,104 +1,102 @@
-  <!DOCTYPE html>
-  <html>
-  <head>
-    <link rel="stylesheet" href="GridBranch01.css">
-    <title>Table Example</title>
-  </head>
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="GridBranch01.css">
+  <title>Table Example</title>
+</head>
 
-  <body>
+<body>
 
-
-    <div>
-      <label for="searchInput">單 號:</label>
-      <input type="text" id="searchInput" name="searchInput" style="width: 120px;">
-      <label for="engName">英文名:</label>
-      <input type="text" id="engName" name="engName" style="width: 100px;">      
-      <label for="startDate">開始日期:</label>
-      <input type="date" id="startDate" name="startDate">
-      <label for="endDate">結束日期:</label>
-      <input type="date" id="endDate" name="endDate">
-      <button id="search" onclick="search()">查詢</button>
-      <button id="addButton" onclick="toggleAddContainer()">新增</button>
-      <!-- <button onclick="test()">test</button>
-      <button onclick="test2()">test2</button> -->
-      <!-- <span style="padding-left:100px;"></span> -->
-    </div>
-    <br>
-    <table class="detail-table" id="detailTable">
-      <!-- 明细表格 -->
-    </table>
-        <div id="connectionStatus"></div>
-          <div id="addContainer" class="hidden">
-            <table>
-              <tbody>
-                <tr><div id="toggleAddStatus"></div>
-                  <td><label for="newCol1">單號</label></td>
-                  <td><label for="newCol2">原國姓名</label></td>
-                  <td><label for="newCol3">台灣姓名</label></td>
-                  <td><label for="newCol4">英文名</label></td>
-                  <td><label for="newCol5">日期</label></td>
-                </tr>
-                <tr>
-                  <td><input type="text" id="newCol1" readonly></td>
-                  <td><input type="text" id="newCol2"></td>
-                  <td><input type="text" id="newCol3"></td>
-                  <td><input type="text" id="newCol4"></td>
-                  <td><input type="date" id="newCol5"></td>
-                </tr>
-                <tr>
-                  <td colspan="5" style="text-align: right;">
-                    <button id="saveAdd" onclick="saveRecord()">Save</button>
-                    <button id="cancelAdd" onclick="cancelAdd()">Cancel</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        <div class="modal-container">
-          <div id="myModal" class="modal">
-            <div class="modal-content">
-              <!-- <span class="close">&times;</span> -->
-              <!-- <p id="detailsText" class="detailsText">test</p>  我希望在這裡顯示detail資料 -->
-              <iframe src="GridBranch01Detail.html" style="width: 100%; height: 100%;"></iframe>
-
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="scrollbar">
-        <div id="tableContainer"> 
-          <table id="myTable">
-
-
-            <colgroup> <!-- 添加 colgroup 元素 -->
-              <!-- 设置前五列的宽度 -->
-              <col style="width: auto;">
-              <col style="width: auto;">
-              <col style="width: auto;">
-              <col style="width: auto;">
-              <col style="width: 150px;">
-              <!-- 设置最后一列的初始宽度 -->
-              <col class="last-column" style="width: 110px;">
-            </colgroup>
-
-
-
-            
-            <thead>
-
-
-              <tr>
-                <!-- 欄位標題 -->
-              </tr>
-
-            </thead>
+  <div>
+    <label for="searchInput">單 號:</label>
+    <input type="text" id="searchInput" name="searchInput" style="width: 120px;">
+    <label for="engName">英文名:</label>
+    <input type="text" id="engName" name="engName" style="width: 100px;">      
+    <label for="startDate">開始日期:</label>
+    <input type="date" id="startDate" name="startDate">
+    <label for="endDate">結束日期:</label>
+    <input type="date" id="endDate" name="endDate">
+    <button id="search" onclick="search()">查詢</button>
+    <button id="addButton" onclick="toggleAddContainer()">新增</button>
+    <!-- <button onclick="test()">test</button>
+    <button onclick="test2()">test2</button> -->
+    <!-- <span style="padding-left:100px;"></span> -->
+  </div>
+  <br>
+  <table class="detail-table" id="detailTable">
+    <!-- 明細表格 -->
+  </table>
+      <div id="connectionStatus"></div>
+        <div id="addContainer" class="hidden">
+          <table>
             <tbody>
-              <!--  資料行將以動態方式插入此處  -->
-              
+              <tr><div id="toggleAddStatus"></div>
+                <td><label for="newCol1">單號</label></td>
+                <td><label for="newCol2">原國姓名</label></td>
+                <td><label for="newCol3">台灣姓名</label></td>
+                <td><label for="newCol4">英文名</label></td>
+                <td><label for="newCol5">日期</label></td>
+              </tr>
+              <tr>
+                <td><input type="text" id="newCol1" readonly></td>
+                <td><input type="text" id="newCol2"></td>
+                <td><input type="text" id="newCol3"></td>
+                <td><input type="text" id="newCol4"></td>
+                <td><input type="date" id="newCol5"></td>
+              </tr>
+              <tr>
+                <td colspan="5" style="text-align: right;">
+                  <button id="saveAdd" onclick="saveRecord()">Save</button>
+                  <button id="cancelAdd" onclick="cancelAdd()">Cancel</button>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
+      <div class="modal-container">
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <!-- <span class="close">&times;</span> -->
+            <!-- <p id="detailsText" class="detailsText">test</p>  我希望在這裡顯示detail資料 -->
+            <iframe src="GridBranch01Detail.html" style="width: 100%; height: 100%;"></iframe>
+
+          </div>
+        </div>
       </div>
-      <script src="GridBranch01.js"></script>
-  </body>
-  </html>
+      <br>
+      <div class="scrollbar">
+      <div id="tableContainer"> 
+        <table id="myTable">
+
+          <colgroup> <!-- 添加 colgroup 元素 -->
+            <!-- 設置前五列的寬度 -->
+            <col style="width: auto;">
+            <col style="width: auto;">
+            <col style="width: auto;">
+            <col style="width: auto;">
+            <col style="width: 150px;">
+            <!-- 設置最後一列的初始寬度 -->
+            <col class="last-column" style="width: 110px;">
+          </colgroup>
+
+
+          
+          <thead>
+
+            <tr>
+              <!-- 欄位標題 -->
+            </tr>
+
+          </thead>
+          <tbody>
+            <!--  資料行將以動態方式插入此處  -->
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="GridBranch01.js"></script>
+</body>
+</html>
+
+
