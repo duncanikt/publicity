@@ -4,7 +4,7 @@ input[readonly] {
 }
 table {
   border-collapse: collapse;
-  width: 800px;  /* width: 90%; */
+  width: 800px;
   table-layout: fixed;
   box-sizing: border-box;
 }
@@ -19,7 +19,7 @@ th, td {
 }
 
 body {
-  background-color: rgb(212, 221, 230); /* rgb(175, 211, 241); */
+  background-color: rgb(212, 221, 230);
   padding: 20px;
 }
 
@@ -39,8 +39,6 @@ tr.selected {
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
   border-right: 1px solid transparent;
-  /* width: 10px;    /*單獨調整第6欄的寬度 */
- /*  text-align: center; 文字置中 */
 }
 
 .hidden {
@@ -62,12 +60,11 @@ text-align: left;
 }
 
 .modal-container {
-position: relative; /* 添加此行，將父元素的position設為relative */
+position: relative;
 top: 0;
 left: 0;
 width: auto;
 height: auto;
-/* overflow:overlay; */
 }
 .modal {
 display: none;
@@ -79,15 +76,10 @@ padding-top: 100px;
 width: 420px;
 height: 540px;
 overflow: visible;
-/* background-color: rgb(0,0,0);
-background-color: rgba(0,0,0,0.4); */
 }
 
 .modal-content {
 background-color: #fefefe;
-/* margin: auto; */
-/* padding: 50px;
-border: 1px solid #888; */
 width: 405px;
 height: 100%;
 position: absolute;

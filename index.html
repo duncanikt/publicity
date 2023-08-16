@@ -9,9 +9,6 @@
   crossorigin="anonymous"
 />
 
-
-
-
   <title>登入/註冊</title>
   <style>
 
@@ -20,7 +17,6 @@
   vertical-align: middle; /* 垂直居中文本 */
   margin-left: 0px; /* 調整文本與圖示之間的間距 */
 }
-
 
 #google-login-button i.fa-google {
   background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
@@ -65,15 +61,6 @@
 }
 
 
-
-
-
-
-
-
-
-
-
     .recaptcha-container {
       display: inline-block;
       transform: scale(0.88); /* 設定外部容器的縮放比例，根據需要調整 */
@@ -105,10 +92,8 @@
     }
 
     #loginRegister.g-recaptcha {
-      /* display: inline-block; */
        /* 設置按鈕間距，根據需要自由調整 */
       margin-right: 23px;
-      /* padding: 8px 15px; */
       background-color: green;
       color: white;
       border: none;
@@ -117,10 +102,8 @@
       height: 30px;
     }
     #loginRegister02.g-recaptcha {
-      /* display: inline-block; */
        /* 設置按鈕間距，根據需要自由調整 */
       margin-right: 23px;
-      /* padding: 8px 15px; */
       background-color: green;
       color: white;
       border: none;
@@ -138,17 +121,14 @@
 </head>
 <body>
   <div class="registerBody">
-
     <h1 style="display:inline-block; margin: 30px 0px 0px 0px;">登入</h1><h6 style="display:inline-block; margin: 0px 0px 0px 0px;">(預設帳密guest，可自行註冊。)</h6>
     <br>
   <form id="registerForm" style="margin: 50px 0px 0px 30px;">
     <label for="username">使用者名稱：</label>
     <input type="text" id="username" required>
-
     <label for="password">密碼：</label>
     <input type="password" id="password" required>
     <button id="togglePassword" type="button">👁️</button>
-    
     <br>
     <div class="recaptcha-container">
       <div
@@ -161,8 +141,6 @@
         data-error-callback="error"
       ></div>
     </div>
-  
-
     <div class="button-container">
     <button
     id="loginRegister"
@@ -173,7 +151,6 @@
     type="button">
     登入
   </button>
-
   <span style="padding-left:120px;"></span>
     <button
     id="loginRegister02"
@@ -198,11 +175,8 @@
   <i class="fab fa-google fa-2x"></i><span class="google-login-text">Google 帳號登入</span>
 </button>
 
-
-
 <br>
 <h3 id="statusMessage"></h3>
-    <!-- <button type="button" onclick="submitForm()">註冊</button> -->
   </form>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script src="https://www.google.com/recaptcha/api.js?render=6Ldq_FAnAAAAAGZvTnh8nCtUwyDqMt6IsQYecHxh"></script>
@@ -212,18 +186,13 @@
       // 跳轉到後端的登錄路由，即 https://i75birth.ddns.net/auth/google
       window.location.href = 'https://i75birth.ddns.net/auth/google/callback';
     }
-    // Function to submit the form and handle backend validation
-    //  function submitForm() {
-    //   alert('前後端伺服器V3 Google reCAPTCHA驗證成功！');
-    //   window.location.href = 'index02.html';
-    // }
 
     let verifyResult; //判斷使用者是否已經驗證了。
     let buttonType; //判斷是點選登入還是註冊。
     // 監聽登錄按鈕點擊事件
     document.querySelector('.g-recaptcha[data-action="submit01"]').addEventListener('click', function () {
   console.log('監聽login');
-      // buttonType = 'login'; //方便測試以後記得刪。
+
     // 先檢查 result.success 是否為 true，如果是才執行登錄按鈕的處理
     if (verifyResult && verifyResult.success) {
       buttonType = 'login';
@@ -241,7 +210,6 @@
     if (verifyResult && verifyResult.success) {
       buttonType = 'login';
     } else {
-      // alert('請先通過驗證。');
       console.log('記得把請先通過驗證。解除註解');
     }
 
@@ -302,7 +270,6 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
       headers: {
         'Content-Type': 'application/json',
       },
-      // body: JSON.stringify(formData),
       body: JSON.stringify({ token: token }),
     })
 
@@ -315,7 +282,6 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
         // 驗證成功，根據按鈕類型執行不同的程式碼
         if (buttonType === 'login') {
           // 登錄按鈕的程式碼
-          // window.location.href = 'https://i75birth.ddns.net/auth/google';
           handleLogin() 
         } else if (buttonType === 'register') {
           console.log('執行註冊function');
@@ -355,7 +321,6 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
       headers: {
         'Content-Type': 'application/json',
       },
-      // body: JSON.stringify(formData),
       body: JSON.stringify({ token: token }),
     })
       .then(response => response.json())
@@ -365,7 +330,6 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
         if (buttonType === 'login') {
           // 登錄按鈕的程式碼
           window.location.href = 'https://i75birth.ddns.net/auth/google';
-          // handleLogin() 
         } else if (buttonType === 'register') {
           console.log('執行註冊function');
           handleLoginOrRegister(token);
@@ -387,13 +351,6 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
   }
 
 
-
-
-
-
-
-
-
     // 把 token 送到後端做驗證
     function verifyCallback02(token) {
     loginButton.style.visibility = 'hidden';
@@ -408,7 +365,6 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
       headers: {
         'Content-Type': 'application/json',
       },
-      // body: JSON.stringify(formData),
       body: JSON.stringify({ token: token }),
     })
       .then(response => response.json())
@@ -417,8 +373,7 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
         if (result.success) {
           verifyResult = result; // 將 result 存儲在變數 verifyResult 中
           // 驗證成功，繼續處理表單提交
-          // alert('V2 Google reCAPTCHA後端驗證也通過。');
-                  // 在一分鐘後重置驗證結果和按鈕類型
+          // 在一分鐘後重置驗證結果和按鈕類型
           setTimeout(() => {
             verifyResult = null;
             buttonType = null;
@@ -436,11 +391,6 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
         showButtonsAndRemoveStatus()
       });
   }
-
-
-
-
-
 
 
     // 新函數，處理密碼雜湊處理和傳遞帳密到後端的登錄路由和註冊路由
@@ -496,12 +446,7 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
 }
 
 
-
-
-
-// 登錄成功後，保存權杖到一個變數中
-// const token = getJwtToken();
-
+     // 登錄成功後，保存權杖到一個變數中
      // 新函數，處理密碼雜湊處理和傳遞帳密到後端的登錄路由和註冊路由
      function handleLogin() {
         // 取得使用者名稱和密碼
@@ -510,7 +455,6 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
 
         // 在這裡添加密碼雜湊處理的程式碼，例如使用 bcrypt 或其他適合的方式
         console.log('前端登入前列印cookie',document.cookie);
-        // console.log('回應頭中的 cookie:', response.headers.get('Set-Cookie'));
 
         // 添加超時處理
         const timeoutPromise = new Promise((resolve, reject) => {
@@ -519,11 +463,7 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
           }, 10000); // 設置超時時間為 10000 毫秒（10 秒）
         });
 
-
-
-
         // 發送 POST 請求到後端進行驗證
-        // fetch('https://i75birth.ddns.net/auth/google', {
           const fetchPromise = fetch('https://i75birth.ddns.net/login', {
           method: 'POST',
           headers: {
@@ -531,7 +471,6 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
 
           },
           body: JSON.stringify({ username: username, password: password }),
-          // credentials: 'include', // 重要：啟用跨域請求中的cookie發送
         })
         Promise.race([fetchPromise, timeoutPromise])
 
@@ -598,17 +537,6 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
         });
       }
 
-
-
-
-
-
-
-
-
-
-
-
       function openWindow() {
                 var w_width = 200;
                 var w_height = 100;
@@ -625,13 +553,11 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
 
     // 在頁面載入後自動填入帳號和密碼並觸發登入按鈕
     window.onload = function () {
-      // document.querySelector('.g-recaptcha[data-action="submit01"]').click(); // 觸發點擊登入按鈕
     };
     const testUsername = 'guest'; // 測試帳號
     const testPassword = 'guest'; // 測試密碼
     document.getElementById('username').value = testUsername;
     document.getElementById('password').value = testPassword;
-
 
   // 在後端回傳後，顯示按鈕並刪除文字
   function showButtonsAndRemoveStatus() {
@@ -640,16 +566,9 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
     registerButton.style.visibility = 'visible';
     h6nono.style.visibility = 'visible';
     GoogleButton.style.visibility = 'visible';
-
     // 刪除文字
     statusMessage.textContent = '';
   }
-
-
-
-
-
-
 
 
   const passwordInput = document.getElementById('password');
@@ -665,10 +584,7 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
 
 </script>
 
-
-
-  
-  </script>
+</script>
 
 </div>
 </body>

@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
 function toggleTree() {
   var sidebar = document.querySelector('.sidebar');
   sidebar.classList.toggle('collapsed');
@@ -23,19 +22,13 @@ function loadPage(pageUrl) {
   // var absolutePageUrl = new URL(pageUrl, location.href).href; // 取得絕對路徑
   var absolutePageUrl = new URL(pageUrl, window.location.origin + '/').href;
   pageFrame.src = pageUrl;
-  // fetchData();
 }
 
 function handleLogoutID(pageUrl) {
   console.log("Hello sindex.html  loadPage 02");
   handleLogout();
-  // window.location.href = 'index.html';
 
 }
-
-
-
-
 
 
 // 登出功能

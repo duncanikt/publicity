@@ -35,9 +35,6 @@ li .caret-down::before {
   display: none;
 }
 
-/* ul.nested ul.nested {
-  margin-left: 100px;
-} 內縮*/
 li > ul.nested > li > ul.nested > li::before {
   content: "●";
   color: rgb(0, 0, 0);
@@ -45,15 +42,6 @@ li > ul.nested > li > ul.nested > li::before {
   margin-right: 6px;
   font-weight: bold;
 }
-
-
-/* li ul.nested ul.nested > li > a.caret::before {
-  content: "\25B6";
-  color: rgb(58, 112, 149);
-  display: inline-block;
-  margin-right: 6px;
-} */
-
 
 /* 當專案展開時顯示嵌套的子項 */
 .active {

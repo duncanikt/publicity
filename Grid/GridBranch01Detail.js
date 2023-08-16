@@ -1,5 +1,4 @@
 
-  // search()
   var Master; // 定義全域變數
   var abortController = new AbortController(); // 移到函式外，讓同一個 controller 在不同的 search 被呼叫時也可以中斷前一個的請求
   var abortSignal = abortController.signal;
@@ -27,11 +26,9 @@
   tableBody.innerHTML = '';
 
   // 清空新增資料欄位
-  // document.getElementById('newCol1').value = '';
   document.getElementById('newCol2').value = '';
   document.getElementById('newCol3').value = '';
   document.getElementById('newCol4').value = '';
-  // document.getElementById('newCol5').value = '';
 
   var addContainer = document.getElementById('addContainer');
   addContainer.classList.add('hidden'); // 隱藏新增資料容器
@@ -98,15 +95,6 @@
             for (var j = 0; j < detailPostureData.length; j++) {
               var detailPosture = detailPostureData[j];
               var newRow = tableBody.insertRow();
-
-              // var firstCell = newRow.insertCell();
-              // var input = document.createElement('input');
-              // input.type = 'text';
-              // input.name = 'ABC';
-              // input.value = rowData.ABC;
-              // input.readOnly = true;
-              // firstCell.appendChild(input);
-
               var cell3 = newRow.insertCell();
               var input3 = document.createElement('input');
               input3.type = 'text';
@@ -144,20 +132,9 @@
             selectButton.onclick = function() {
 
               var selectButton02 = event.currentTarget; // 獲取觸發事件的按鈕元素
-              // alert(selectButton02.innerText);
               var cancelButtonExists = document.querySelector('button[data-cancel-button-id]');
-              // if (cancelButtonExists && selectButton02.innerText !== '修改') {
-              //   // alert('ycancel');
 
-              // }else{
-                lastModifiedRow = this.closest('tr');
-              // }
-
-              // // 獲取上一次點擊行的資料
-              // var lastClickedRowInputs = document.querySelectorAll('tr.selected input[type="text"], tr.selected input[type="date"]');
-              // lastClickedRowInputs.forEach(function(input) {
-              //   lastClickedRowData[input.name] = input.value;
-              // });
+              lastModifiedRow = this.closest('tr');
               checkRow02 = this;
               if (selectButton02.innerText !== '儲存') {
                 console.log('修改？',selectButton02.innerText);
@@ -174,75 +151,15 @@
                   checkRow02 = this;
                   lastClickedRowData = event.currentTarget; // 獲取觸發事件的按鈕元素
                   lastModifiedRow02 = this.closest('tr');
-                  // alert('更新了行的位置');
-
                 }
 
               }
-              // alert('等等');
-
-              // // 檢查表格中是否存在取消按鈕或保存按鈕
-              // var cancelButtonExists = document.querySelector('button[data-cancel-button-id]');
-              // var saveButtonExists = document.querySelector('.select-cell button[text="儲存"]');
-              
-              // if (cancelButtonExists || saveButtonExists) {
-              //   // alert('請選擇儲存或取消。');
-              //   // return;
-              // }
-
-              // // 獲取上一次點擊行的資料
-              // var lastClickedRowInputs = document.querySelectorAll('tr.selected input[type="text"], tr.selected input[type="date"]');
-              // lastClickedRowInputs.forEach(function(input) {
-              //   lastClickedRowData[input.name] = input.value;
-              // });
-
-
-              // lastClickedRowData = Object.assign({}, originalData); // 保存上一次點擊行的原始資料
-
-              // checkRow = this;
-              //   var button = event.currentTarget; // 獲取觸發事件的按鈕元素
-              //   var row = button.closest('tr'); // 獲取按鈕所在的行元素
-
-              // var notSaved = [];
-              // if (checkRow === checkRow02) {
-              // }else{
-              //   if (checkRow02){
-              //     var keys = Object.keys(originalData);
-              //     var cells02 = row.getElementsByTagName('input');
-              //     console.log('lastClickedRowData',lastClickedRowData[keys[1]],originalData[keys[1]]);
-
-              //     for (var j = 0; j < cells02.length; j++) {
-              //     var input02 = cells02[j];
-              //     // console.log('新',cells02[j],originalData[keys[j]]);
-              //     console.log('比對',lastClickedRowData[keys[j]],originalData[keys[j]]);
-
-              //     if(lastClickedRowData[keys[j]] !== originalData[keys[j]]){
-              //       notSaved.push(lastClickedRowData[keys[j]]); // 將未保存的值添加到陣列中
-
-              //     }}
-              //     // 檢查是否有未保存的資料
-              //     if (notSaved.length > 0) {
-              //       // 在彈窗中顯示未保存的資料
-              //       alert('資料未儲存：' + notSaved.join(', '));
-              //       return;
-              //     }
-              //   }
-              // }
-
-
-
-              // editRecord(this); // 傳遞當前按鈕的引用
-              // 保存原始資料
-              // button02 = this.querySelector('.select-cell button');
               var cells = this.parentNode.parentNode.getElementsByTagName('input');
               for (var j = 0; j < cells.length; j++) {
                 var input = cells[j];
                 originalData[input.name] = input.value;
               }   
               console.log('舊',originalData);
-
-              // cancelUpdate(this, '', against) 
-              
               var cancelButton = document.querySelector('button[data-cancel-button-id="' + against + '"]');
               var cancelButtonList = document.querySelectorAll('button[data-cancel-button-id]');
                   cancelButtonList.forEach(function(cancelButtonElement) {
@@ -277,15 +194,10 @@
             deleteButton.classList.add('delete-button');
             deleteButton.onclick = function () {
               var rowdel = this.parentNode.parentNode;
-              // var input2 = rowdel.querySelector('input');
-              // var A02 = rowdel.querySelector('input');
-              // var ABC = input2.value;
-
               var inputElements = rowdel.querySelectorAll('input');
               var ABCMaster = window.Master;
               var ShoulderWidth = inputElements[0].value;
               var confirmMessage = '確定刪除單號'+ABCMaster+'日期編號'+ShoulderWidth+' 嗎？';
-
 
               openWindow02();
               function openWindow02() {
@@ -325,9 +237,6 @@
               checkRow = this;
               var cells02 ;
 
-
-
-
             var lastClickedRowData02 = event.currentTarget; // 獲取觸發事件的按鈕元素 
               var row = lastClickedRowData02.closest('tr'); // 獲取按鈕所在的行元素
               cells02 = row.getElementsByTagName('input');
@@ -344,7 +253,6 @@
                   cells02 = row.getElementsByTagName('input');
                   if (checkUnsavedChanges(cells02, 4)) {
                     console.log('就是這裡');
-                      // checkRow02 = this;
                       return;
                     } else {
                       console.log('02給值了');
@@ -355,17 +263,6 @@
                     }
                     
                 }
-                // if (checkRow !== checkRow02) {
-                //   if (checkUnsavedChanges(cells02, 4)) {
-                //     console.log('尋找迴圈位置06');
-                //     return
-                //   }
-                // }
-
-                // if (cancelButtonExists) {
-                //   console.log('資料相同不執行檢查');
-                //   return;
-                // }
                 // 如果按兩下的是同一行，不需要檢查
               return;
               }else{
@@ -394,64 +291,6 @@
                 }
               }
             }
-
-              
-              // if (checkRow02){
-              //     var cells02 = button02.parentNode.parentNode.getElementsByTagName('input');
-              //     for (var j = 0; j < cells02.length; j++) {
-              //     var input02 = cells02[j];
-              //     console.log('先值先值',cells02[j].value);}
-              //     }
-                  
-
-              // if (checkUnsavedChanges(cells02,3)) {
-              //   checkRow02 = this;
-              //   return;
-              // }else{
-              //   checkRow02 = this;
-              //   button02 = this.querySelector('.select-cell button');
-              // }
-
-              
-
-              // checkRow = this;
-              // var button = this.querySelector('.select-cell button');
-              // var notSaved = [];
-              // if (checkRow === checkRow02) {
-              // }else{
-              //   if (checkRow02){
-              //     var cells02 = button02.parentNode.parentNode.getElementsByTagName('input');
-              //     var cells = button.parentNode.parentNode.getElementsByTagName('input');
-              //     for (var j = 0; j < cells.length; j++) {
-              //     var input = cells[j];
-              //     var input02 = cells02[j];
-              //     console.log('先值',cells02[j].value);
-              //     if(input02.value !== originalData[input.name]){
-              //       notSaved.push(input02.value); // 將未保存的值添加到陣列中
-              //     }}
-              //     // 檢查是否有未保存的資料
-              //     if (notSaved.length > 0) {
-              //       // 在彈窗中顯示未保存的資料
-              //       alert('資料未儲存：' + notSaved.join(', '));
-              //       return;
-              //     }
-              //   }
-              // // 保存原始資料
-              // button02 = this.querySelector('.select-cell button');
-              // var cells = button02.parentNode.parentNode.getElementsByTagName('input');
-              // for (var j = 0; j < cells.length; j++) {
-              //   var input = cells[j];
-              //   originalData[input.name] = input.value;
-              // }
-
-              // }
-
-
-
-
-
-
-
 
                 var button = this.querySelector('.select-cell button');
                 if (button.innerText === '修改') {
@@ -489,7 +328,6 @@
 
       console.log('Error:', error);
       var errorElement = document.createElement('div');
-      // errorElement.innerText = '後端伺服器連線失敗';
       document.body.appendChild(errorElement);
       connectionStatus.textContent = '連線失敗...';
     });
@@ -508,18 +346,12 @@ function getValueByPath(obj, path) {
   return value;
 }
 
-        // function toggleAddContainer() {
-        //   var addContainer = document.getElementById("addContainer");
-        //   addContainer.classList.toggle("hidden");
-        // }
-
         function addData() {
           var id = document.getElementById("inputId").value;
           var name = document.getElementById("inputName").value;
           var age = document.getElementById("inputAge").value;
 
           // 添加資料到data陣列
-
           toggleAddContainer();
         }
 
@@ -554,30 +386,6 @@ function getValueByPath(obj, path) {
   }
 
   function toggleButton(button) {
-
-
-    // if (button.innerText === '修改') {
-    //   // 先取消先前選定行的修改
-    //   var cancelButton = document.querySelector('.button-container button');
-    //   if (cancelButton) {
-    //     cancelButton.click();
-    //   }
-
-    //   button.innerText = '儲存';
-    //   button.style.backgroundColor = 'red';
-    //   button.style.color = '';
-
-    //   var cancelButtonId = 'cancelButton' + Math.random().toString(36).substr(2, 9);
-    //   var cancelButtonElement = createCancelButton(cancelButtonId);
-    //   button.parentNode.appendChild(cancelButtonElement);
-      
-    //   cancelButtonElement.onclick = function() {
-    //     cancelUpdate(button, cancelButtonId);
-    //   };
-    // }
-
-
-
     if (button.innerText === '修改') {
       button.innerText = '儲存';
       button.style.backgroundColor = 'red';
@@ -604,30 +412,22 @@ function getValueByPath(obj, path) {
         cancelUpdate(button, cancelButtonId); // 獲取取消按鈕的 ID 並作為參數傳遞給 cancelUpdate 函數
       };
       
-
-
-      // button.parentNode.appendChild(document.createElement('br')); // 新增換行元素
-      // button.parentNode.appendChild(cancelButton);
-
     } else 
     {
       // 獲取當前行的所有儲存格
       var cells = button.parentNode.parentNode.getElementsByTagName('input');
-      // cells = DBTableTeader ;
       // 創建包含要發送的資料的物件
       var data = {};
       var data02 = {};
-      // data[cells[0].name] = cells[0].value; // 獲取第一列資料
-
-        connectionStatus.textContent = '儲存中...'; 
-        // 隱藏所有修改按鈕
-        var selectButtons = document.querySelectorAll('.select-cell button');
-        selectButtons.forEach(function(button) {
-          button.style.display = 'none';
-        });
-        button.innerText = '儲存中...';
-        button.disabled = true;
-        var DBTableTeader = [
+      connectionStatus.textContent = '儲存中...'; 
+      // 隱藏所有修改按鈕
+      var selectButtons = document.querySelectorAll('.select-cell button');
+      selectButtons.forEach(function(button) {
+        button.style.display = 'none';
+      });
+      button.innerText = '儲存中...';
+      button.disabled = true;
+      var DBTableTeader = [
       "ShoulderWidth",
       "height",
       "weight"
@@ -663,11 +463,6 @@ function getValueByPath(obj, path) {
               button.disabled = false;
               button.style.backgroundColor = '';
               button.style.color = '';
-              // button.parentNode.removeChild(button.nextSibling); // 移除"取消"按鈕  不移除也沒差因為下一行重新search()了
-              // search();
-              // selectRow(cells);
-              // input[1].readOnly = true;
-
               for (var j = 0; j < cells.length; j++) 
               {
                 var input = cells[j];
@@ -699,7 +494,6 @@ function getValueByPath(obj, path) {
     }
   }
 
-
   function editRecord(button) {
     var rows = document.getElementsByTagName('tr');
     // 將所有修改按鈕設置為只能讀取
@@ -710,7 +504,6 @@ function getValueByPath(obj, path) {
         button.style.backgroundColor = '';
         button.style.color = '';
       }
-      // button.parentNode.parentNode.classList.remove('selected');
       button.parentNode.parentNode.querySelectorAll('input[type="number"]').forEach(function(input) {
         input.readOnly = true;
       });
@@ -728,14 +521,6 @@ function getValueByPath(obj, path) {
     }
       button02 = button;
       checkUnsavedChanges(cells,4);
-
-    // button.parentNode.removeChild(button.nextSibling); // 移除換行元素
-    // button.parentNode.removeChild(button.nextSibling); // 移除換行元素
-    // button.parentNode.removeChild(button.nextSibling); // 移除換行元素
-    // button.parentNode.removeChild(button.nextSibling); // 移除"取消"按鈕
-    // var row = button.parentNode.parentNode;
-    // var tableBody = document.getElementById('addContainer').getElementsByTagName('tbody')[0];
-    // tableBody.deleteRow(row.rowIndex);
 
     if (against) {
       var cancelButton = document.querySelector('button[data-cancel-button-id="' + against + '"]');
@@ -767,9 +552,6 @@ function getValueByPath(obj, path) {
       });
     });
 
-    // 顯示刪除按鈕
-    // 檢查是否所有取消按鈕都已被移除
-    // 只有當所有取消按鈕都被移除時才顯示刪除按鈕
       // 顯示刪除按鈕
       var deleteButtons = document.querySelectorAll('button.delete-button');
       deleteButtons.forEach(function(button) {
@@ -810,18 +592,6 @@ function getValueByPath(obj, path) {
 
     }
 
-    // 檢查是否按兩下了該行
-    // var isDoubleClick = false;
-    // row.addEventListener('dblclick', function() {
-    //   isDoubleClick = true;
-    // });
-
-    // // 點擊行的修改按鈕
-    // if (isDoubleClick) {
-    //   toggleButton(selectButton);
-    //   isDoubleClick = false; // 重置按兩下標誌
-    // }
-
   }
 
   function generateDetailRow(rowData) {
@@ -851,7 +621,6 @@ function getValueByPath(obj, path) {
     var addButton = document.getElementById('addButton');
     var addContainer = document.getElementById('addContainer');
     var today = new Date().toISOString().split('T')[0];
-    // document.getElementById('newCol5').value = today;
 
     if (addContainer.classList.contains('hidden')) {
       addContainer.classList.remove('hidden');
@@ -871,10 +640,6 @@ function getValueByPath(obj, path) {
     var addContainer = document.getElementById('addContainer');
     var cancelAdd = document.getElementById('cancelAdd');
     if (
-      // target !== addButton &&                             // 目標不是「新增」按鈕本身
-      // target.parentNode !== addButton &&                  // 目標不是「新增」按鈕的父節點（即包含文字的元素）
-      // target !== addContainer &&                          // 目標不是「addContainer」本身
-      // !addContainer.contains(target) ||                   // 目標不是「addContainer」的子元素
       target === cancelAdd                                // 目標是「取消按鈕」元素本身
     ) {
       addContainer.classList.add('hidden');               // 隱藏新增資料容器
@@ -882,11 +647,9 @@ function getValueByPath(obj, path) {
 
   });
   function cancelAdd() {
-    // document.getElementById('newCol1').value = '';
     document.getElementById('newCol2').value = '';
     document.getElementById('newCol3').value = '';
     document.getElementById('newCol4').value = '';
-    // document.getElementById('newCol5').value = '';
   }
 
   function getMaxValueFromDatabase(Master) 
@@ -894,7 +657,6 @@ function getValueByPath(obj, path) {
       // 在這裡訪問並使用全域變數 Master 的值來自function search
         var currentMaster = window.Master;
         var newCol1Input = currentMaster;
-        // newCol1Input.value = currentMaster;
         var saveButton = document.getElementById('saveAdd'); // 獲取保存按鈕元素
         document.getElementById('newCol2').value = '新單號建立中...';
         saveButton.setAttribute('disabled', 'true');
@@ -911,7 +673,6 @@ function getValueByPath(obj, path) {
             var newCol2Value = generateNewValue(maxVal, formattedDate); // 生成新的單號
             newCol2Input.value = newCol2Value;
             //請求成功時移除或隱藏連接狀態文本
-            // connectionStatus.textContent = '';
             saveButton.removeAttribute('disabled');
           })
           .catch(function(error) {
@@ -962,11 +723,9 @@ function getValueByPath(obj, path) {
 
   function saveRecord() 
     {
-      // var newCol1 = document.getElementById('newCol1').value;
       var newCol2 = document.getElementById('newCol2').value;
       var newCol3 = document.getElementById('newCol3').value;
       var newCol4 = document.getElementById('newCol4').value;
-      // var newCol5 = document.getElementById('newCol5').value;
       // 檢查 newCol3 和 newCol4 是否為數字
       if (isNaN(newCol3) || isNaN(newCol4)) {
         alert('只能輸入數字');
@@ -986,7 +745,6 @@ function getValueByPath(obj, path) {
         newCol2: newCol2,
         newCol3: newCol3,
         newCol4: newCol4
-        // newCol5: newCol5
       };
 
       fetch('https://i75birth.ddns.net/detail/detailinsert', { // 替換為後端 MongoDB 的 URL
@@ -1007,14 +765,10 @@ function getValueByPath(obj, path) {
             // 重新載入資料
             var currentMaster = window.Master;
             search(currentMaster,currentMaster);
-            // searchInput.value = newCol1; // 將新增的資料作為搜索輸入值
             // 清空新增資料欄位
-            // document.getElementById('newCol1').value = '';
             document.getElementById('newCol2').value = '';
             document.getElementById('newCol3').value = '';
             document.getElementById('newCol4').value = '';
-            // document.getElementById('newCol5').value = '';
-
           } else {
               // 新增失敗，處理錯誤訊息
               response.json().then(function (errorData) {
@@ -1097,14 +851,6 @@ function getValueByPath(obj, path) {
 var masterTable = document.getElementById('addContainer');
 var detailTable = document.getElementById('detailTable');
 
-// 點擊主表格行時觸發事件
-// addContainer.addEventListener('click', function(event) {
-//   var selectedRow = event.target.parentNode;
-//   var detailData = getDetailData(selectedRow); // 根據選中的行獲取明細資料
-
-//   displayDetailTable(detailData); // 顯示明細表格
-// });
-
 function displayDetailTable(detailData) {
   // 清空明細表格內容
   detailTable.innerHTML = '';
@@ -1137,9 +883,6 @@ function displayDetailTable(detailData) {
 }
 
 
-
-
-
   function checkUnsavedChanges(aaaaa,bbbb) {
     console.log('進入checkUnsavedChanges');
 
@@ -1156,16 +899,12 @@ if (bbbb===4){
     var cccc =  aaaaa ;
     aaaaa = [];
     for (var j = 0; j < keys.length; j++) {
-    // console.log('值99',cccc[j].value);
     aaaaa[j] = cccc[j].value;
-    // console.log('值88',aaaaa[j]);
     }
 }
 
   for (var j = 0; j < keys.length; j++) {
     var key = keys[j];
-    // console.log('值',aaaaa[j],'值2',originalData[key]);
-
     if (aaaaa[j] !== originalData[key] && aaaaa!==undefined ) {
       notSaved.push(aaaaa[j]);
     }
@@ -1173,7 +912,6 @@ if (bbbb===4){
 
   if (notSaved.length > 0) {
     alert('未儲存：' + notSaved.join(', '));
-    // alert('修改資料未儲存');
     return true;
   }
 
@@ -1189,7 +927,6 @@ function openWindow(saveButton,cancelButton,message) {
   var ww = 'width=' + w_width + ',height=' + w_height + ',top=' + y + ',left=' + x;
   var openWIN = window.open('', '', ww);
   openWIN.document.write('<h2 style="text-align: center;">' + message + '</h2>');
-  // openWIN.document.write('<button onclick="window.close()" style="display: block; margin: 0 auto;">確認</button>');
   // 判斷 saveButton 和 cancelButton 是否有值
   if (saveButton && cancelButton) {
     saveButton.innerText = 'Save';

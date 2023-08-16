@@ -3,38 +3,23 @@
   padding: 0;
   margin-top: -0.3cm;
   margin-bottom: -0.3cm;
-  /* margin-left: 0.1cm; */
-  /* border: none; 新增這行來消除邊框 */
 }
 .container {
   display: flex;
-  /* display: grid; */
   height: 100vh; /* 設置父容器的高度為視窗的高度 */
-  /* width: 100%; */
-/*  align-items: center; /* 垂直置中 */
-/* justify-content: center; /*水準置中 */
 }
 
 .sidebar {
-  /* width: 30%; */
   flex: 14%;
-  background-color: #ddd2d2; /* #c3b1b1; */
+  background-color: #ddd2d2;
   margin-top: -0.3cm;
   margin-bottom: -0.3cm;
   margin-left: -0.2cm;
-  /* position: relative; */
-  /* position: absolute; */
-
-  /* margin: 0;
-  padding: 0; */
 }
 
 .content {
   background-color: #c2cfe1;
   flex: 85%;
-  /* width: 70%; */
-  /* padding: 20px; */
-  /* margin: 0; */
   margin-top: -0.3cm;
   margin-bottom: -0.3cm;
   margin-right: -0.3cm;
@@ -46,15 +31,6 @@
   overflow: hidden;
   transition: max-width 0.3s ease-out;
 }
-
-
-
-
-
-
-
-
-
 
 .topbar {
   background-color: #f1f1f1; /* #f1f1f1; */

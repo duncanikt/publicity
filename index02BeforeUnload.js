@@ -3,9 +3,7 @@ window.addEventListener('beforeunload', () => {
   // localStorage.removeItem('jwt'); // 或其他存儲方式的清除操作
 // 獲取會話存儲中的權杖
 const token = sessionStorage.getItem('jwt');
-// console.log('權杖值：',sessionStorage.getItem('jwt'));
 
-// console.log('權杖值：',token);
 // 執行其他操作（例如發送權杖過期請求等）
 if (token) {
 // 刪除會話存儲中的權杖
