@@ -13,12 +13,9 @@ if (token) {
 
 });
 // 檢查是否存在權杖
-console.log("檢查開始");
 const token = sessionStorage.getItem('jwt');
-console.log('權杖值：',token);
 const expirationTime = localStorage.getItem('expirationTime');
 const currentTime = Math.floor(Date.now()); // 獲取當前時間的時間戳記（單位：秒）
-console.log(currentTime,expirationTime);
 
 if (!token) {
 window.location.href = 'index.html';
@@ -41,7 +38,5 @@ alert('登入時間已過期，請重新登入。');
 // ...
 }
 }
-
-console.log("檢查結束");
 
 

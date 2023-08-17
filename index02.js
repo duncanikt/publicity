@@ -16,7 +16,6 @@ function toggleTree() {
   sidebar.classList.toggle('collapsed');
 }
 function loadPage(pageUrl) {
-  console.log("Hello sindex.html  loadPage 02");
   var pageFrame = document.getElementById('pageFrame');
 
   // var absolutePageUrl = new URL(pageUrl, location.href).href; // 取得絕對路徑
@@ -25,9 +24,7 @@ function loadPage(pageUrl) {
 }
 
 function handleLogoutID(pageUrl) {
-  console.log("Hello sindex.html  loadPage 02");
   handleLogout();
-
 }
 
 

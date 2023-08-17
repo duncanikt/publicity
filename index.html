@@ -191,33 +191,31 @@
     let buttonType; //判斷是點選登入還是註冊。
     // 監聽登錄按鈕點擊事件
     document.querySelector('.g-recaptcha[data-action="submit01"]').addEventListener('click', function () {
-  console.log('監聽login');
+  // console.log('監聽login');
 
     // 先檢查 result.success 是否為 true，如果是才執行登錄按鈕的處理
     if (verifyResult && verifyResult.success) {
       buttonType = 'login';
     } else {
       alert('請先勾選“我不是機器人”。');
-      // console.log('記得把請先通過驗證。解除註解');
     }
 });
 
     // 監聽google登錄按鈕點擊事件
     document.querySelector('.g-recaptcha[data-action="submit03"]').addEventListener('click', function () {
-  console.log('監聽google login');
+  // console.log('監聽google login');
       buttonType = 'login'; //方便測試以後記得刪。
     // 先檢查 result.success 是否為 true，如果是才執行登錄按鈕的處理
     if (verifyResult && verifyResult.success) {
       buttonType = 'login';
     } else {
-      console.log('記得把請先通過驗證。解除註解');
     }
 
 });
 
 // 監聽註冊按鈕點擊事件
 document.querySelector('.g-recaptcha[data-action="submit02"]').addEventListener('click', function () {
-  console.log('監聽register');
+  // console.log('監聽register');
   // 先檢查 result.success 是否為 true，如果是才執行登錄按鈕的處理
   if (verifyResult && verifyResult.success) {
     buttonType = 'register';
@@ -284,7 +282,7 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
           // 登錄按鈕的程式碼
           handleLogin() 
         } else if (buttonType === 'register') {
-          console.log('執行註冊function');
+          // console.log('執行註冊function');
           handleLoginOrRegister(token);
         }
       } else {
@@ -331,7 +329,7 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
           // 登錄按鈕的程式碼
           window.location.href = 'https://i75birth.ddns.net/auth/google';
         } else if (buttonType === 'register') {
-          console.log('執行註冊function');
+          // console.log('執行註冊function');
           handleLoginOrRegister(token);
         }
       } else {
@@ -454,7 +452,6 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
         const password = document.getElementById('password').value;
 
         // 在這裡添加密碼雜湊處理的程式碼，例如使用 bcrypt 或其他適合的方式
-        console.log('前端登入前列印cookie',document.cookie);
 
         // 添加超時處理
         const timeoutPromise = new Promise((resolve, reject) => {
@@ -488,7 +485,7 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
 
         })
           .then(data => {
-            console.log('有沒有執行權杖');
+            // console.log('有沒有執行權杖');
             // 從回應中獲取權杖並保存在本地
             const token = data.token;
             const expirationTime = data.expirationTime; // 從後端回應中獲取到期時間

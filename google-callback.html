@@ -9,7 +9,7 @@
     // 獲取 URL 參數中的授權碼
     const urlParams = new URLSearchParams(window.location.search);
     const authorizationCode = urlParams.get('code');
-    console.log('Author 授權碼:', authorizationCode);
+    // console.log('Author 授權碼:', authorizationCode);
 
     // 將授權碼發送給後端
     fetch('https://i75birth.ddns.net/auth/google/callback', {
@@ -21,7 +21,6 @@
     })
     .then(response => response.json())
     .then(data => {
-      console.log('後端返回的資料:', data);
         // 將權杖存儲在 localStorage 中
         // localStorage.setItem('jwt', data.token); //跟下面一行兩種寫法都可以
         const token = data.token;

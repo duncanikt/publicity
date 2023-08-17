@@ -137,7 +137,6 @@
               lastModifiedRow = this.closest('tr');
               checkRow02 = this;
               if (selectButton02.innerText !== '儲存') {
-                console.log('修改？',selectButton02.innerText);
                 var cells02 ;
                 if (lastClickedRowData) {
                   var row = lastClickedRowData.closest('tr'); // 獲取按鈕所在的行元素
@@ -159,7 +158,6 @@
                 var input = cells[j];
                 originalData[input.name] = input.value;
               }   
-              console.log('舊',originalData);
               var cancelButton = document.querySelector('button[data-cancel-button-id="' + against + '"]');
               var cancelButtonList = document.querySelectorAll('button[data-cancel-button-id]');
                   cancelButtonList.forEach(function(cancelButtonElement) {
@@ -218,7 +216,6 @@
                   var tableBody = table.getElementsByTagName('tbody')[0];
                   tableHeader.innerHTML = '';
                   tableBody.innerHTML = '';
-                  console.log('查:', ABCMaster,ShoulderWidth);
                   deleteRecord('',ABCMaster,ShoulderWidth);
                   openWIN.close();
                 };
@@ -246,16 +243,12 @@
 
             outerLoop: for (var i = 0; i < 1; i++) {
               if (lastModifiedRow === lastDoubleClickedRow) {
-                console.log('點擊修改按鈕等於雙擊當下');
                 if (isSecondInputEditable) {
-                  console.log('錯了？');
                   var row = lastClickedRowData.closest('tr'); // 獲取按鈕所在的行元素
                   cells02 = row.getElementsByTagName('input');
                   if (checkUnsavedChanges(cells02, 4)) {
-                    console.log('就是這裡');
                       return;
                     } else {
-                      console.log('02給值了');
                       checkRow02 = this;
                       lastClickedRowData = event.currentTarget; // 獲取觸發事件的按鈕元素
                       lastModifiedRow02 = this;
@@ -266,12 +259,9 @@
                 // 如果按兩下的是同一行，不需要檢查
               return;
               }else{
-                console.log('尋找迴圈位置04');
                 if (checkRow === checkRow02) {
-                  console.log('尋找迴圈位置03');
                   var cancelButtonExists = document.querySelector('button[data-cancel-button-id]');
                 if (cancelButtonExists) {
-                  console.log('取消按鈕存在就不更新');
                   return;
                 }
                 } else {
@@ -280,10 +270,8 @@
                     cells02 = row.getElementsByTagName('input');
                   }
                   if (checkUnsavedChanges(cells02, 4)) {
-                    console.log('尋找迴圈位置01');
                     return;
                   } else {
-                    console.log('尋找迴圈位置02');
                     checkRow02 = this;
                     lastClickedRowData = event.currentTarget; // 獲取觸發事件的按鈕元素
                     lastModifiedRow02 = this;
@@ -296,7 +284,6 @@
                 if (button.innerText === '修改') {
                   toggleButton(button);
                 }
-                console.log('尋找迴圈位置05');
                 checkRow02 = this;
                 var cancelButton = document.querySelector('button[data-cancel-button-id="' + against + '"]');
                 var cancelButtonList = document.querySelectorAll('button[data-cancel-button-id]');
@@ -696,7 +683,6 @@ function getValueByPath(obj, path) {
 
   // 生成新的單號
   function generateNewValue(maxValue, formattedDate) {
-    console.log('查=', maxValue,'查end');
     var prefix = ''; //'Aws'; 
     var numberPart = '';
     var numberPart01 = '';
@@ -710,8 +696,7 @@ function getValueByPath(obj, path) {
     var number = parseInt(numberPart);
     var newNumber = number + 1;
     var newNumberPart = newNumber.toString().padStart(3, '0'); // 將新的數位部分轉換為三位元數格式
-    console.log(numberPart01, formattedDate);
-
+  
     if (numberPart01 === formattedDate) {
       return prefix + formattedDate + newNumberPart;
       }else{
@@ -884,7 +869,6 @@ function displayDetailTable(detailData) {
 
 
   function checkUnsavedChanges(aaaaa,bbbb) {
-    console.log('進入checkUnsavedChanges');
 
   var notSaved = [];
   var keys = Object.keys(originalData);
@@ -895,7 +879,6 @@ function displayDetailTable(detailData) {
   });
 
 if (bbbb===4){
-  console.log('進入bbbb===4');
     var cccc =  aaaaa ;
     aaaaa = [];
     for (var j = 0; j < keys.length; j++) {
@@ -940,6 +923,6 @@ function openWindow(saveButton,cancelButton,message) {
 
 
 
-console.log("script end");
+console.log("明細 js end");
 
 
