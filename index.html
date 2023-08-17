@@ -133,7 +133,7 @@
     <div class="recaptcha-container">
       <div
         class="g-recaptcha"
-        data-sitekey="6LdsYVEnAAAAADxRZ3lwmjihG2xIMwlU7K2P71Zf"
+        data-sitekey="(recaptcha金鑰放置位置)"
         data-theme="light"
         data-size="normal"
         data-callback="verifyCallback02"
@@ -145,7 +145,7 @@
     <button
     id="loginRegister"
     class="g-recaptcha"
-    data-sitekey="6Ldq_FAnAAAAAGZvTnh8nCtUwyDqMt6IsQYecHxh"
+    data-sitekey="(recaptcha金鑰放置位置)"
     data-action="submit01"
     data-callback="verifyCallback"
     type="button">
@@ -155,7 +155,7 @@
     <button
     id="loginRegister02"
     class="g-recaptcha"
-    data-sitekey="6Ldq_FAnAAAAAGZvTnh8nCtUwyDqMt6IsQYecHxh"
+    data-sitekey="(recaptcha金鑰放置位置)"
     data-action="submit02"
     data-callback="verifyCallback"
     type="button">
@@ -168,7 +168,7 @@
 <button
   id="google-login-button"
   class="g-recaptcha"
-  data-sitekey="6Ldq_FAnAAAAAGZvTnh8nCtUwyDqMt6IsQYecHxh"
+  data-sitekey="(recaptcha金鑰放置位置)"
   data-action="submit03"
   data-callback="verifyCallback03"
   type="button">
@@ -179,12 +179,12 @@
 <h3 id="statusMessage"></h3>
   </form>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <script src="https://www.google.com/recaptcha/api.js?render=6Ldq_FAnAAAAAGZvTnh8nCtUwyDqMt6IsQYecHxh"></script>
+  <script src="https://www.google.com/recaptcha/api.js?render=(recaptcha金鑰放置位置)"></script>
   <script>
 
     function handleGoogleLogin() {
-      // 跳轉到後端的登錄路由，即 https://i75birth.ddns.net/auth/google
-      window.location.href = 'https://i75birth.ddns.net/auth/google/callback';
+      // 跳轉到後端的登錄路由，即 https://example.com/auth/google
+      window.location.href = 'https://example.com/auth/google/callback';
     }
 
     let verifyResult; //判斷使用者是否已經驗證了。
@@ -263,7 +263,7 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
       statusMessage.textContent = '執行中...';
     }
     // 發送 POST 請求到後端進行驗證
-    fetch('https://i75birth.ddns.net/submit-form', {
+    fetch('https://example.com/submit-form', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -314,7 +314,7 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
       statusMessage.textContent = '執行中...';
     }
     // 發送 POST 請求到後端進行驗證
-    fetch('https://i75birth.ddns.net/submit-form', {
+    fetch('https://example.com/submit-form', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -327,7 +327,7 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
         // 驗證成功，根據按鈕類型執行不同的程式碼
         if (buttonType === 'login') {
           // 登錄按鈕的程式碼
-          window.location.href = 'https://i75birth.ddns.net/auth/google';
+          window.location.href = 'https://example.com/auth/google';
         } else if (buttonType === 'register') {
           // console.log('執行註冊function');
           handleLoginOrRegister(token);
@@ -358,7 +358,7 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
     statusMessage.textContent = '後端伺服器驗證中...';
 
     // 發送 POST 請求到後端進行驗證
-    fetch('https://i75birth.ddns.net/submit-form02', {
+    fetch('https://example.com/submit-form02', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -402,7 +402,7 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
       // 在這裡添加密碼雜湊處理的程式碼，例如使用 bcrypt 或其他適合的方式
 
       // 發送 POST 請求到後端進行驗證
-      fetch('https://i75birth.ddns.net/register', {
+      fetch('https://example.com/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -461,7 +461,7 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
         });
 
         // 發送 POST 請求到後端進行驗證
-          const fetchPromise = fetch('https://i75birth.ddns.net/login', {
+          const fetchPromise = fetch('https://example.com/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -514,7 +514,7 @@ document.getElementById('registerForm').addEventListener('keydown', function (ev
 
 
       function fetchDataWithToken(token) {
-        const url = 'https://i75birth.ddns.net/data?search=' + encodeURIComponent(searchInput) + '&engName=' + encodeURIComponent(engName) + '&startDate=' + encodeURIComponent(startDate) + '&endDate=' + encodeURIComponent(endDate);
+        const url = 'https://example.com/data?search=' + encodeURIComponent(searchInput) + '&engName=' + encodeURIComponent(engName) + '&startDate=' + encodeURIComponent(startDate) + '&endDate=' + encodeURIComponent(endDate);
         console.log('url:', url);
         addBT = '';
         fetch(url, {

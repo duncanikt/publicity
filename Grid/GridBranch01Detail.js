@@ -54,7 +54,7 @@
     tableBody.innerHTML = '';
   }
   var url =
-    'https://i75birth.ddns.net/detail/detaildata?search=' +
+    'https://example.com/detail/detaildata?search=' +
     encodeURIComponent(Master); //+ '&startDate=' + encodeURIComponent(startDate) + '&endDate=' + encodeURIComponent(endDate)
 
     fetch(url, { signal: abortSignal })
@@ -433,7 +433,7 @@ function getValueByPath(obj, path) {
         }
         data = data02;
         // 發送修改請求，保存資料
-        var url = 'https://i75birth.ddns.net/detail/detailupdate';
+        var url = 'https://example.com/detail/detailupdate';
         fetch(url, {
           method: 'POST',
           headers: {
@@ -647,7 +647,7 @@ function getValueByPath(obj, path) {
         var saveButton = document.getElementById('saveAdd'); // 獲取保存按鈕元素
         document.getElementById('newCol2').value = '新單號建立中...';
         saveButton.setAttribute('disabled', 'true');
-        var url = 'https://i75birth.ddns.net/detail/detailmaxValue?master=' + encodeURIComponent(currentMaster);
+        var url = 'https://example.com/detail/detailmaxValue?master=' + encodeURIComponent(currentMaster);
         fetch(url)
           .then(function(response) {
             return response.json();
@@ -732,7 +732,7 @@ function getValueByPath(obj, path) {
         newCol4: newCol4
       };
 
-      fetch('https://i75birth.ddns.net/detail/detailinsert', { // 替換為後端 MongoDB 的 URL
+      fetch('https://example.com/detail/detailinsert', { // 替換為後端 MongoDB 的 URL
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -787,7 +787,7 @@ function getValueByPath(obj, path) {
       var ShoulderWidth = ShoulderWidth1;
 
       // 發送刪除請求
-      var url = 'https://i75birth.ddns.net/detail/detaildelete';
+      var url = 'https://example.com/detail/detaildelete';
 
       fetch(url, {
         method: 'DELETE',

@@ -33,7 +33,7 @@
     var modal = document.getElementById('myModal');
     modal.style.display = 'none';
 
-    var url = 'https://i75birth.ddns.net/data?search=' + encodeURIComponent(searchInput) +  '&engName=' + encodeURIComponent(engName) + '&startDate=' + encodeURIComponent(startDate) + '&endDate=' + encodeURIComponent(endDate);
+    var url = 'https://example.com/data?search=' + encodeURIComponent(searchInput) +  '&engName=' + encodeURIComponent(engName) + '&startDate=' + encodeURIComponent(startDate) + '&endDate=' + encodeURIComponent(endDate);
     addBT = '' ;
     fetch(url, {
       method: 'GET',
@@ -386,7 +386,7 @@
         data = data02;
 
         // 發送修改請求，保存資料
-        var url = 'https://i75birth.ddns.net/update';
+        var url = 'https://example.com/update';
         fetch(url, {
           method: 'POST',
           headers: {
@@ -656,7 +656,7 @@
         document.getElementById('newCol1').value = '新單號建立中...';
         var saveButton = document.getElementById('saveAdd'); // 獲取保存按鈕元素
         saveButton.setAttribute('disabled', 'true');
-        var url = 'https://i75birth.ddns.net/maxValue';
+        var url = 'https://example.com/maxValue';
         fetch(url)
           .then(function(response) {
             return response.json();
@@ -731,7 +731,7 @@
         newCol5: newCol5
       };
 
-      fetch('https://i75birth.ddns.net/insert', { // 替換為後端 MongoDB 的 URL
+      fetch('https://example.com/insert', { // 替換為後端 MongoDB 的 URL
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -791,7 +791,7 @@
       var ABC = input.value;
 
       // 發送刪除請求
-      var url = 'https://i75birth.ddns.net/delete';
+      var url = 'https://example.com/delete';
 
       fetch(url, {
         method: 'DELETE',
