@@ -1,0 +1,63 @@
+a {
+  text-decoration: none;
+}
+
+/* 树状结构样式 */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 10px;
+  text-align: center; /* 將文字置中 */
+}
+
+li .caret {
+  cursor: pointer;
+  display: inline-block; 
+  /*調整為行內元素 */
+}
+
+li .caret::before {
+  content: "\25B6";
+  color: rgb(58, 112, 149);
+  display: inline-block;
+  margin-right: 6px;
+}
+
+li .caret-down::before {
+  transform: rotate(90deg);
+}
+
+/* 默认情况下隐藏所有嵌套的子项 */
+.nested {
+  display: none;
+}
+
+/* ul.nested ul.nested {
+  margin-left: 100px;
+} 內縮*/
+li > ul.nested > li > ul.nested > li::before {
+  content: "●";
+  color: rgb(0, 0, 0);
+  display: inline-block;
+  margin-right: 6px;
+  font-weight: bold;
+}
+
+
+
+/* li ul.nested ul.nested > li > a.caret::before {
+  content: "\25B6";
+  color: rgb(58, 112, 149);
+  display: inline-block;
+  margin-right: 6px;
+} */
+
+
+
+/* 当项目展开时显示嵌套的子项 */
+.active {
+  display: block;
+}
