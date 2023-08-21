@@ -1,0 +1,106 @@
+
+.google-login-text {
+  font-size: 1.5em; /* 調整文本大小 */
+  vertical-align: middle; /* 垂直居中文本 */
+  margin-left: 0px; /* 調整文本與圖示之間的間距 */
+}
+
+#google-login-button i.fa-google {
+  background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  vertical-align: middle; /* 調整圖示垂直居中 */
+  margin-bottom: -2px; /* 調整圖示位置往下一點 */
+}
+
+#togglePassword {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: -30px;
+}
+
+#google-login-button {
+  display: inline-block;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  width: 263px;
+}
+
+#google-login-button i.fa-google {
+  margin-right: 10px; /* 調整圖示和文本之間的間距 */
+}
+
+#google-login-button:hover {
+  background-color: #f5f5f5;
+  border-color: #aaa;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+    .recaptcha-container {
+      display: inline-block;
+      transform: scale(0.88); /* 設定外部容器的縮放比例，根據需要調整 */
+      transform-origin: 0 0; /* 設定縮放的基準點，左上角為原點 */
+    }
+
+    .registerBody {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0px 0px 0px 170px;
+    }
+
+
+    form {
+      margin-top: 20px;
+      display: inline-block;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 250px;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    #loginRegister.g-recaptcha {
+       /* 設置按鈕間距，根據需要自由調整 */
+      margin-right: 23px;
+      background-color: green;
+      color: white;
+      border: none;
+      cursor: pointer;
+      width:  60px;
+      height: 30px;
+    }
+    #loginRegister02.g-recaptcha {
+       /* 設置按鈕間距，根據需要自由調整 */
+      margin-right: 23px;
+      background-color: green;
+      color: white;
+      border: none;
+      cursor: pointer;
+      width:  60px;
+      height: 30px;
+    }
+    .button-container {
+      display: flex;
+      justify-content: space-around;
+      margin: 0px 0px 0px 0px; /* 設置容器上方間距 */
+    }
+

@@ -35,7 +35,7 @@ localStorage.removeItem('jwt');
 sessionStorage.removeItem('jwt');
 
 // 發送登出請求到後端
-fetch('https://i75birth.ddns.net/logout', {
+fetch('https://duncanikt.ddns.net/logout', {
   method: 'POST',
 })
 .then(response => {

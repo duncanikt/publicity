@@ -11,7 +11,7 @@ window.onload = function() {
         var ABC = input.value;
 
         // 發送刪除請求
-        var url = 'https://i75birth.ddns.net/logout';
+        var url = 'https://duncanikt.ddns.net/logout';
 
         fetch(url, {
           method: 'DELETE',
@@ -48,7 +48,7 @@ function handleLogout() {
   localStorage.removeItem('jwt');
   
   // 發送登出請求到後端
-  fetch('https://i75birth.ddns.net/logout', {
+  fetch('https://duncanikt.ddns.net/logout', {
     method: 'POST',
     // credentials: 'include', // 需要包含認證憑證（cookie）
   })
