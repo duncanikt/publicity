@@ -395,3 +395,59 @@ if (passwordInput.type === 'password') {
   passwordInput.type = 'password';
 }
 });
+
+
+
+
+
+  // 在頁面載入時從後端取得敏感訊息
+  fetch('/sensitive-info')
+    .then(response => response.json())
+    .then(data => {
+      // 更新 recaptcha 的 data-sitekey 屬性
+      const recaptchaElements = document.querySelectorAll('.g-recaptcha');
+      recaptchaElements.forEach(element => {
+        element.setAttribute('data-sitekey', data.recaptcha01);
+      });
+      
+      // 更新其他按鈕的 data-sitekey 屬性
+      const loginButton = document.getElementById('loginRegister');
+      loginButton.setAttribute('data-sitekey', data.recaptcha02);
+      const loginButton02 = document.getElementById('loginRegister02');
+      loginButton02.setAttribute('data-sitekey', data.recaptcha02);
+      const loginButton03 = document.getElementById('google-login-button');
+      loginButton03.setAttribute('data-sitekey', data.recaptcha02);
+      
+
+
+    // 重新加載 Google reCAPTCHA
+    grecaptcha.ready(() => {
+      // 移除之前的 reCAPTCHA widget (如果存在)
+      // const recaptchaWidgets = grecaptcha.getResponse();
+      // if (recaptchaWidgets.length > 0) {
+      //   recaptchaWidgets.forEach(widget => {
+      //     grecaptcha.reset(widget);
+      //   });
+      // }
+
+      // 初始化新的 reCAPTCHA widget
+      recaptchaElements.forEach(element => {
+        grecaptcha.render(element, {
+          sitekey: element.getAttribute('data-sitekey'),
+          theme: element.getAttribute('data-theme'),
+          size: element.getAttribute('data-size'),
+          callback: element.getAttribute('data-callback'),
+          'expired-callback': element.getAttribute('data-expired-callback'),
+          'error-callback': element.getAttribute('data-error-callback')
+        });
+      });
+
+
+
+
+});
+
+  })
+    .catch(error => {
+      console.error('發生錯誤:', error);
+    });
