@@ -35,7 +35,7 @@ localStorage.removeItem('jwt');
 sessionStorage.removeItem('jwt');
 
 // 發送登出請求到後端
-fetch('https://duncanikt.ddns.net/logout', {
+fetch('/logout', {
   method: 'POST',
 })
 .then(response => {

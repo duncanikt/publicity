@@ -1,7 +1,13 @@
+let index_js01='' ;
+let index_js02='' ;
+let index_js03='' ;
+let index_js04='' ;
+let index_js05='' ;
+let index_js06='' ;
+
 
 function handleGoogleLogin() {
-  // 跳轉到後端的登錄路由，即 https://duncanikt.ddns.net/auth/google
-  window.location.href = 'https://duncanikt.ddns.net/auth/google/callback';
+  window.location.href = '/auth/google/callback';
 }
 
 let verifyResult; //判斷使用者是否已經驗證了。
@@ -80,7 +86,7 @@ if (buttonType === 'login' || buttonType === 'register') {
   statusMessage.textContent = '執行中...';
 }
 // 發送 POST 請求到後端進行驗證
-fetch('https://duncanikt.ddns.net/submit-form', {
+fetch(index_js01, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -131,7 +137,7 @@ if (buttonType === 'login' || buttonType === 'register') {
   statusMessage.textContent = '執行中...';
 }
 // 發送 POST 請求到後端進行驗證
-fetch('https://duncanikt.ddns.net/submit-form', {
+fetch(index_js02, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -144,7 +150,7 @@ fetch('https://duncanikt.ddns.net/submit-form', {
     // 驗證成功，根據按鈕類型執行不同的程式碼
     if (buttonType === 'login') {
       // 登錄按鈕的程式碼
-      window.location.href = 'https://duncanikt.ddns.net/auth/google';
+      window.location.href = '/auth/google';
     } else if (buttonType === 'register') {
       // console.log('執行註冊function');
       handleLoginOrRegister(token);
@@ -175,7 +181,7 @@ h6nono.style.visibility = 'hidden';
 statusMessage.textContent = '後端伺服器驗證中...';
 
 // 發送 POST 請求到後端進行驗證
-fetch('https://duncanikt.ddns.net/submit-form02', {
+fetch(index_js03, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -219,7 +225,7 @@ function handleLoginOrRegister(token) {
   // 在這裡添加密碼雜湊處理的程式碼，例如使用 bcrypt 或其他適合的方式
 
   // 發送 POST 請求到後端進行驗證
-  fetch('https://duncanikt.ddns.net/register', {
+  fetch(index_js04, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -278,7 +284,7 @@ function handleLoginOrRegister(token) {
     });
 
     // 發送 POST 請求到後端進行驗證
-      const fetchPromise = fetch('https://duncanikt.ddns.net/login', {
+      const fetchPromise = fetch(index_js05, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -291,7 +297,7 @@ function handleLoginOrRegister(token) {
     .then(response => {
       if (response.ok) {
         openWindow();
-        showButtonsAndRemoveStatus()
+        // showButtonsAndRemoveStatus()
         return response.json();
       }
       if (response.status === 401) {
@@ -331,7 +337,7 @@ function handleLoginOrRegister(token) {
 
 
   function fetchDataWithToken(token) {
-    const url = 'https://duncanikt.ddns.net/data?search=' + encodeURIComponent(searchInput) + '&engName=' + encodeURIComponent(engName) + '&startDate=' + encodeURIComponent(startDate) + '&endDate=' + encodeURIComponent(endDate);
+    const url = index_js06 + encodeURIComponent(searchInput) + '&engName=' + encodeURIComponent(engName) + '&startDate=' + encodeURIComponent(startDate) + '&endDate=' + encodeURIComponent(endDate);
     console.log('url:', url);
     addBT = '';
     fetch(url, {
@@ -418,18 +424,16 @@ if (passwordInput.type === 'password') {
       const loginButton03 = document.getElementById('google-login-button');
       loginButton03.setAttribute('data-sitekey', data.recaptcha02);
       
-
+      // 後端敏感連結
+      index_js01 = data.index_js01;
+      index_js02 = data.index_js02;
+      index_js03 = data.index_js03;
+      index_js04 = data.index_js04;
+      index_js05 = data.index_js05;
+      index_js06 = data.index_js06;
 
     // 重新加載 Google reCAPTCHA
     grecaptcha.ready(() => {
-      // 移除之前的 reCAPTCHA widget (如果存在)
-      // const recaptchaWidgets = grecaptcha.getResponse();
-      // if (recaptchaWidgets.length > 0) {
-      //   recaptchaWidgets.forEach(widget => {
-      //     grecaptcha.reset(widget);
-      //   });
-      // }
-
       // 初始化新的 reCAPTCHA widget
       recaptchaElements.forEach(element => {
         grecaptcha.render(element, {
@@ -440,11 +444,11 @@ if (passwordInput.type === 'password') {
           'expired-callback': element.getAttribute('data-expired-callback'),
           'error-callback': element.getAttribute('data-error-callback')
         });
+      // 延遲 2 秒後隱藏 "載入中..." 的文字
+      setTimeout(() => {
+        document.getElementById('recaptcha-loading').style.display = 'none';
+      }, 1500);
       });
-
-
-
-
 });
 
   })
