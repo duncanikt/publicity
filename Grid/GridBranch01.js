@@ -1,10 +1,16 @@
+let GridBranch01_js01='' ;
+let GridBranch01_js02='' ;
+let GridBranch01_js03='' ;
+let GridBranch01_js04='' ;
+let GridBranch01_js05='' ;
 
-  search()
   var lastDoubleClickedRow ;     // 用於雙擊和單擊修改按鈕交互關聯
   var lastClickedRowData = null; // 用於雙擊和單擊修改按鈕交互關聯
   var lastModifiedRow = null;    // 用於雙擊和單擊修改按鈕交互關聯
   var lastModifiedRow02 = null;  // 用於雙擊和單擊修改按鈕交互關聯
   var button02 ;
+
+
   function search(addBT) {  
     // 獲取 URL 參數中的權杖
   const token = localStorage.getItem('jwt');
@@ -18,9 +24,7 @@
       searchInput = document.getElementById('searchInput').value;
     }
 
-    
     var engName = document.getElementById('engName').value;
-
     var startDate = document.getElementById('startDate').value;
     var endDate = document.getElementById('endDate').value;
     var table = document.getElementById('myTable');
@@ -32,8 +36,7 @@
     // 關閉模態框
     var modal = document.getElementById('myModal');
     modal.style.display = 'none';
-
-    var url = 'https://i75birth.ddns.net/data?search=' + encodeURIComponent(searchInput) +  '&engName=' + encodeURIComponent(engName) + '&startDate=' + encodeURIComponent(startDate) + '&endDate=' + encodeURIComponent(endDate);
+    var url = GridBranch01_js01 + encodeURIComponent(searchInput) +  '&engName=' + encodeURIComponent(engName) + '&startDate=' + encodeURIComponent(startDate) + '&endDate=' + encodeURIComponent(endDate);
     addBT = '' ;
     fetch(url, {
       method: 'GET',
@@ -101,7 +104,6 @@
           var selectButton = document.createElement('button');
           selectButton.innerText = '修改';
           selectCell.appendChild(selectButton);
-
           selectButton.onclick = function() {
 
             var selectButton02 = event.currentTarget; // 獲取觸發事件的按鈕元素
@@ -225,7 +227,6 @@
                     lastModifiedRow02 = this;
                     break outerLoop; 
                   }
-                  
               }
             return;
             }else{
@@ -386,7 +387,7 @@
         data = data02;
 
         // 發送修改請求，保存資料
-        var url = 'https://i75birth.ddns.net/update';
+        var url = GridBranch01_js02;
         fetch(url, {
           method: 'POST',
           headers: {
@@ -567,7 +568,6 @@
 
     document.getElementById('searchInput').addEventListener('keydown', function(event) {
       if (event.key === 'Enter') {
-
         event.preventDefault(); // 防止默認的Enter鍵行為（提交表單）
         var button = document.getElementById('search');
         button.innerText = '查詢中...';
@@ -656,7 +656,7 @@
         document.getElementById('newCol1').value = '新單號建立中...';
         var saveButton = document.getElementById('saveAdd'); // 獲取保存按鈕元素
         saveButton.setAttribute('disabled', 'true');
-        var url = 'https://i75birth.ddns.net/maxValue';
+        var url = GridBranch01_js03;
         fetch(url)
           .then(function(response) {
             return response.json();
@@ -731,7 +731,7 @@
         newCol5: newCol5
       };
 
-      fetch('https://i75birth.ddns.net/insert', { // 替換為後端 MongoDB 的 URL
+      fetch(GridBranch01_js04, { // 替換為後端 MongoDB 的 URL
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -791,7 +791,7 @@
       var ABC = input.value;
 
       // 發送刪除請求
-      var url = 'https://i75birth.ddns.net/delete';
+      var url = GridBranch01_js05;
 
       fetch(url, {
         method: 'DELETE',
@@ -964,5 +964,20 @@ setTimeout(function() {
 function objectsAreEqual(obj1, obj2) {
 return JSON.stringify(obj1) === JSON.stringify(obj2);
 }
-console.log("Grid js end");
+
+
+  // 在頁面載入時從後端取得敏感訊息
+  fetch('/sensitive-info')
+    .then(response => response.json())
+    .then(data => {
+      GridBranch01_js01 = data.GridBranch01_js01;
+      GridBranch01_js02 = data.GridBranch01_js02;
+      GridBranch01_js03 = data.GridBranch01_js03;
+      GridBranch01_js04 = data.GridBranch01_js04;
+      GridBranch01_js05 = data.GridBranch01_js05;
+      search()
+    })
+.catch(error => {
+  console.error('發生錯誤:', error);
+});
 

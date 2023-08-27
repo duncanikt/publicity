@@ -11,7 +11,7 @@ window.onload = function() {
         var ABC = input.value;
 
         // 發送刪除請求
-        var url = 'https://i75birth.ddns.net/logout';
+        var url = '/logout';
 
         fetch(url, {
           method: 'DELETE',
@@ -42,30 +42,6 @@ window.onload = function() {
 
 };
 
-// 登出功能
-function handleLogout() {
-  // 清除本地儲存的JWT權杖
-  localStorage.removeItem('jwt');
-  
-  // 發送登出請求到後端
-  fetch('https://i75birth.ddns.net/logout', {
-    method: 'POST',
-    // credentials: 'include', // 需要包含認證憑證（cookie）
-  })
-  .then(response => {
-    if (response.ok) {
-      // 登出成功，可以根據需要執行其他操作，例如重新導向至登入頁面
-      window.location.href = 'index.html'; // 將登入頁面的URL改成'index.html'
-    } else {
-      console.error('登出失敗:', response.status, response.statusText);
-      alert('登出失敗，請稍後再試。');
-    }
-  })
-  .catch(error => {
-    console.error('登出失敗:', error);
-    alert('登出失敗，請稍後再試。');
-  });
-}
 
 
 

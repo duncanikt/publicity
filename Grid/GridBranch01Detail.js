@@ -1,3 +1,8 @@
+let GridBranch01Detail_js01='' ;
+let GridBranch01Detail_js02='' ;
+let GridBranch01Detail_js03='' ;
+let GridBranch01Detail_js04='' ;
+let GridBranch01Detail_js05='' ;
 
   var Master; // 定義全域變數
   var abortController = new AbortController(); // 移到函式外，讓同一個 controller 在不同的 search 被呼叫時也可以中斷前一個的請求
@@ -54,7 +59,7 @@
     tableBody.innerHTML = '';
   }
   var url =
-    'https://i75birth.ddns.net/detail/detaildata?search=' +
+    GridBranch01Detail_js01 +
     encodeURIComponent(Master); //+ '&startDate=' + encodeURIComponent(startDate) + '&endDate=' + encodeURIComponent(endDate)
 
     fetch(url, { signal: abortSignal })
@@ -433,7 +438,7 @@ function getValueByPath(obj, path) {
         }
         data = data02;
         // 發送修改請求，保存資料
-        var url = 'https://i75birth.ddns.net/detail/detailupdate';
+        var url = GridBranch01Detail_js02;
         fetch(url, {
           method: 'POST',
           headers: {
@@ -647,7 +652,7 @@ function getValueByPath(obj, path) {
         var saveButton = document.getElementById('saveAdd'); // 獲取保存按鈕元素
         document.getElementById('newCol2').value = '新單號建立中...';
         saveButton.setAttribute('disabled', 'true');
-        var url = 'https://i75birth.ddns.net/detail/detailmaxValue?master=' + encodeURIComponent(currentMaster);
+        var url = GridBranch01Detail_js03 + encodeURIComponent(currentMaster);
         fetch(url)
           .then(function(response) {
             return response.json();
@@ -732,7 +737,7 @@ function getValueByPath(obj, path) {
         newCol4: newCol4
       };
 
-      fetch('https://i75birth.ddns.net/detail/detailinsert', { // 替換為後端 MongoDB 的 URL
+      fetch(GridBranch01Detail_js04, { // 替換為後端 MongoDB 的 URL
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -787,7 +792,7 @@ function getValueByPath(obj, path) {
       var ShoulderWidth = ShoulderWidth1;
 
       // 發送刪除請求
-      var url = 'https://i75birth.ddns.net/detail/detaildelete';
+      var url = GridBranch01Detail_js05;
 
       fetch(url, {
         method: 'DELETE',
@@ -813,24 +818,6 @@ function getValueByPath(obj, path) {
           document.body.appendChild(errorElement);
         });
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
 
 
 var masterTable = document.getElementById('addContainer');
@@ -869,7 +856,6 @@ function displayDetailTable(detailData) {
 
 
   function checkUnsavedChanges(aaaaa,bbbb) {
-
   var notSaved = [];
   var keys = Object.keys(originalData);
   var lastClickedRowData = {};
@@ -921,6 +907,20 @@ function openWindow(saveButton,cancelButton,message) {
   }, 500); // 0.5秒後自動關閉彈窗
 }
 
+
+  // 在頁面載入時從後端取得敏感訊息
+  fetch('/sensitive-info')
+    .then(response => response.json())
+    .then(data => {
+      GridBranch01Detail_js01 = data.GridBranch01Detail_js01;
+      GridBranch01Detail_js02 = data.GridBranch01Detail_js02;
+      GridBranch01Detail_js03 = data.GridBranch01Detail_js03;
+      GridBranch01Detail_js04 = data.GridBranch01Detail_js04;
+      GridBranch01Detail_js05 = data.GridBranch01Detail_js05;
+    })
+.catch(error => {
+  console.error('發生錯誤:', error);
+});
 
 
 console.log("明細 js end");
