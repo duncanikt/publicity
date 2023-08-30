@@ -3,6 +3,8 @@ let GridBranch01Detail_js02='' ;
 let GridBranch01Detail_js03='' ;
 let GridBranch01Detail_js04='' ;
 let GridBranch01Detail_js05='' ;
+const useSensitiveEnv = false;  // 使用sensitive.env還是sensitive00.env
+
 
   var Master; // 定義全域變數
   var abortController = new AbortController(); // 移到函式外，讓同一個 controller 在不同的 search 被呼叫時也可以中斷前一個的請求
@@ -908,8 +910,14 @@ function openWindow(saveButton,cancelButton,message) {
 }
 
 
-  // 在頁面載入時從後端取得敏感訊息
-  fetch('/sensitive-info')
+// 在頁面載入時從後端取得敏感訊息
+fetch('/sensitive-info', {
+  method: 'POST', // 使用POST方法傳遞參數
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ useSensitiveEnv }), // 傳遞參數給後端，因前端伺服器的不同而使用不同的.env敏感訊息檔案。
+})
     .then(response => response.json())
     .then(data => {
       GridBranch01Detail_js01 = data.GridBranch01Detail_js01;

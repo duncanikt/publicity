@@ -4,6 +4,7 @@ let index_js03='' ;
 let index_js04='' ;
 let index_js05='' ;
 let index_js06='' ;
+const useSensitiveEnv = false;  // 使用sensitive.env還是sensitive00.env
 
 
 function handleGoogleLogin() {
@@ -406,8 +407,14 @@ if (passwordInput.type === 'password') {
 
 
 
-  // 在頁面載入時從後端取得敏感訊息
-  fetch('/sensitive-info')
+// 在頁面載入時從後端取得敏感訊息
+fetch('/sensitive-info', {
+  method: 'POST', // 使用POST方法傳遞參數
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ useSensitiveEnv }), // 傳遞參數給後端，因前端伺服器的不同而使用不同的.env敏感訊息檔案。
+})
     .then(response => response.json())
     .then(data => {
       // 更新 recaptcha 的 data-sitekey 屬性
