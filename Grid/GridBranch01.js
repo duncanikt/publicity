@@ -3,6 +3,8 @@ let GridBranch01_js02='' ;
 let GridBranch01_js03='' ;
 let GridBranch01_js04='' ;
 let GridBranch01_js05='' ;
+const useSensitiveEnv = true;  // 使用sensitive.env還是sensitive00.env
+
 
   var lastDoubleClickedRow ;     // 用於雙擊和單擊修改按鈕交互關聯
   var lastClickedRowData = null; // 用於雙擊和單擊修改按鈕交互關聯
@@ -966,18 +968,23 @@ return JSON.stringify(obj1) === JSON.stringify(obj2);
 }
 
 
-  // 在頁面載入時從後端取得敏感訊息
-  fetch('/sensitive-info')
-    .then(response => response.json())
-    .then(data => {
-      GridBranch01_js01 = data.GridBranch01_js01;
-      GridBranch01_js02 = data.GridBranch01_js02;
-      GridBranch01_js03 = data.GridBranch01_js03;
-      GridBranch01_js04 = data.GridBranch01_js04;
-      GridBranch01_js05 = data.GridBranch01_js05;
-      search()
-    })
+// 在頁面載入時從後端取得敏感訊息
+fetch('/sensitive-info', {
+  method: 'POST', // 使用POST方法傳遞參數
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ useSensitiveEnv }), // 傳遞參數給後端，因前端伺服器的不同而使用不同的.env敏感訊息檔案。
+})
+.then(response => response.json())
+.then(data => {
+  GridBranch01_js01 = data.GridBranch01_js01;
+  GridBranch01_js02 = data.GridBranch01_js02;
+  GridBranch01_js03 = data.GridBranch01_js03;
+  GridBranch01_js04 = data.GridBranch01_js04;
+  GridBranch01_js05 = data.GridBranch01_js05;
+  search();
+})
 .catch(error => {
   console.error('發生錯誤:', error);
 });
-
