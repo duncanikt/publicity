@@ -4,11 +4,11 @@ let index_js03='' ;
 let index_js04='' ;
 let index_js05='' ;
 let index_js06='' ;
-const useSensitiveEnv = true;  // 使用sensitive.env還是sensitive00.env
+const useSensitiveEnv = false;  // 使用sensitive.env還是sensitive00.env
 
 
 function handleGoogleLogin() {
-  window.location.href = '/auth/google/callback';
+  window.location.href = 'https://duncanikt.ddns.net/auth/google/callback';
 }
 
 let verifyResult; //判斷使用者是否已經驗證了。
@@ -408,7 +408,7 @@ if (passwordInput.type === 'password') {
 
 
 // 在頁面載入時從後端取得敏感訊息
-fetch('/sensitive-info', {
+fetch('https://duncanikt.ddns.net/sensitive-info', {
   method: 'POST', // 使用POST方法傳遞參數
   headers: {
     'Content-Type': 'application/json',
