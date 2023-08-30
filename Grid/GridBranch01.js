@@ -969,7 +969,7 @@ return JSON.stringify(obj1) === JSON.stringify(obj2);
 
 
 // 在頁面載入時從後端取得敏感訊息
-fetch('/sensitive-info', {
+fetch('https://duncanikt.ddns.net/sensitive-info', {
   method: 'POST', // 使用POST方法傳遞參數
   headers: {
     'Content-Type': 'application/json',
