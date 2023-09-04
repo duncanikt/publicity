@@ -440,7 +440,6 @@ fetch('https://duncanikt.ddns.net/sensitive-info', {
       index_js05 = data.index_js05;
       index_js06 = data.index_js06;
       index_js07 = data.index_js07;
-
     // 重新加載 Google reCAPTCHA
     grecaptcha.ready(() => {
       // 初始化新的 reCAPTCHA widget
