@@ -5,7 +5,7 @@ let index_js04='' ;
 let index_js05='' ;
 let index_js06='' ;
 let index_js07='' ;
-const useSensitiveEnv = false;  // 使用sensitive.env還是sensitive00.env
+const useSensitiveEnv = true;  // 使用sensitive.env還是sensitive00.env
 
 
 function handleGoogleLogin() {
@@ -459,9 +459,6 @@ fetch('https://duncanikt.ddns.net/sensitive-info', {
       //   document.getElementById('recaptcha-loading').style.display = 'none';
       // }, 1500);
       });
-      setTimeout(() => {
-        document.getElementById('recaptcha-loading').style.display = 'none';
-      }, 1500);
 });
 
   })
