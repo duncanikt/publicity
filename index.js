@@ -406,6 +406,13 @@ if (passwordInput.type === 'password') {
 
 
 
+// 更新 recaptcha 的 data-sitekey 屬性
+const updateRecaptchaSitekey = (sitekey) => {
+  const recaptchaElements = document.querySelectorAll('.g-recaptcha');
+  recaptchaElements.forEach(element => {
+    element.setAttribute('data-sitekey', sitekey);
+  });
+}
 
 
 // 在頁面載入時從後端取得敏感訊息
@@ -419,10 +426,7 @@ fetch('https://duncanikt.ddns.net/sensitive-info', {
     .then(response => response.json())
     .then(data => {
       // 更新 recaptcha 的 data-sitekey 屬性
-      const recaptchaElements = document.querySelectorAll('.g-recaptcha');
-      recaptchaElements.forEach(element => {
-        element.setAttribute('data-sitekey', data.recaptcha01);
-      });
+      updateRecaptchaSitekey(data.recaptcha01);
       
       // 更新其他按鈕的 data-sitekey 屬性
       const loginButton = document.getElementById('loginRegister');
