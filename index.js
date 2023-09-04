@@ -419,10 +419,11 @@ fetch('https://duncanikt.ddns.net/sensitive-info', {
     .then(response => response.json())
     .then(data => {
       // 更新 recaptcha 的 data-sitekey 屬性
-      const recaptchaElements = document.querySelectorAll('.g-recaptcha');
-      recaptchaElements.forEach(element => {
-        element.setAttribute('data-sitekey', data.recaptcha01);
-      });
+      // 將選擇元素的方式由 querySelectorAll 改為 getElementById
+      const recaptchaElement = document.getElementById('googleV2');
+      recaptchaElement.setAttribute('data-sitekey', data.recaptcha01);
+
+
       
       // 更新其他按鈕的 data-sitekey 屬性
       const loginButton = document.getElementById('loginRegister');
