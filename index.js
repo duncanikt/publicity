@@ -407,8 +407,8 @@ if (passwordInput.type === 'password') {
 
 
 // 更新 recaptcha 的 data-sitekey 屬性
-const recaptchaElements = document.querySelectorAll('.g-recaptcha');
 const updateRecaptchaSitekey = (sitekey) => {
+  const recaptchaElements = document.querySelectorAll('.g-recaptcha');
   recaptchaElements.forEach(element => {
     element.setAttribute('data-sitekey', sitekey);
   });
@@ -447,6 +447,7 @@ fetch('https://duncanikt.ddns.net/sensitive-info', {
     // 重新加載 Google reCAPTCHA
     grecaptcha.ready(() => {
       // 初始化新的 reCAPTCHA widget
+      const recaptchaElements = document.querySelectorAll('.g-recaptcha');
       recaptchaElements.forEach(element => {
         grecaptcha.render(element, {
           // sitekey: element.getAttribute('data-sitekey'),
