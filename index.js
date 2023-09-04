@@ -5,7 +5,7 @@ let index_js04='' ;
 let index_js05='' ;
 let index_js06='' ;
 let index_js07='' ;
-const useSensitiveEnv = true;  // 使用sensitive.env還是sensitive00.env
+const useSensitiveEnv = false;  // 使用sensitive.env還是sensitive00.env
 
 
 function handleGoogleLogin() {
