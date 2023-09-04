@@ -33,25 +33,24 @@ function handleLogout() {
 // 清除本地儲存的JWT權杖
 localStorage.removeItem('jwt');
 sessionStorage.removeItem('jwt');
-window.location.href = 'index.html'; // 將登入頁面的URL改成'index.html'
 
-// // 發送登出請求到後端
-// fetch('/logout', {
-//   method: 'POST',
-// })
-// .then(response => {
-//   if (response.ok) {
-//     // 登出成功，可以根據需要執行其他操作，例如重新導向至登入頁面
-//     window.location.href = 'index.html'; // 將登入頁面的URL改成'index.html'
-//   } else {
-//     console.error('登出失敗:', response.status, response.statusText);
-//     alert('登出失敗，請稍後再試。');
-//   }
-// })
-// .catch(error => {
-//   console.error('登出失敗:', error);
-//   alert('登出失敗，請稍後再試。');
-// });
+// 發送登出請求到後端
+fetch('https://duncanikt.ddns.net/logout', {
+  method: 'POST',
+})
+.then(response => {
+  if (response.ok) {
+    // 登出成功，可以根據需要執行其他操作，例如重新導向至登入頁面
+    window.location.href = 'index.html'; // 將登入頁面的URL改成'index.html'
+  } else {
+    console.error('登出失敗:', response.status, response.statusText);
+    alert('登出失敗，請稍後再試。');
+  }
+})
+.catch(error => {
+  console.error('登出失敗:', error);
+  alert('登出失敗，請稍後再試。');
+});
 }
 
 
