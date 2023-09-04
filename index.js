@@ -5,11 +5,11 @@ let index_js04='' ;
 let index_js05='' ;
 let index_js06='' ;
 let index_js07='' ;
-const useSensitiveEnv = true;  // 使用sensitive.env還是sensitive00.env
+const useSensitiveEnv = false;  // 使用sensitive.env還是sensitive00.env
 
 
 function handleGoogleLogin() {
-  window.location.href = '/auth/google/callback';
+  window.location.href = 'https://duncanikt.ddns.net/auth/google/callback';
 }
 
 let verifyResult; //判斷使用者是否已經驗證了。
@@ -409,7 +409,7 @@ if (passwordInput.type === 'password') {
 
 
 // 在頁面載入時從後端取得敏感訊息
-fetch('/sensitive-info', {
+fetch('https://duncanikt.ddns.net/sensitive-info', {
   method: 'POST', // 使用POST方法傳遞參數
   headers: {
     'Content-Type': 'application/json',
@@ -441,25 +441,28 @@ fetch('/sensitive-info', {
       index_js06 = data.index_js06;
       index_js07 = data.index_js07;
     // 重新加載 Google reCAPTCHA
-//     grecaptcha.ready(() => {
-//       // 初始化新的 reCAPTCHA widget
-//       recaptchaElements.forEach(element => {
-//         grecaptcha.render(element, {
-//           sitekey: element.getAttribute('data-sitekey'),
-//           theme: element.getAttribute('data-theme'),
-//           size: element.getAttribute('data-size'),
-//           callback: element.getAttribute('data-callback'),
-//           'expired-callback': element.getAttribute('data-expired-callback'),
-//           'error-callback': element.getAttribute('data-error-callback')
-//         });
-//         // 隱藏 "載入中..." 的文字
-//         document.getElementById('recaptcha-loading').style.display = 'none';
-//       // // 延遲 2 秒後隱藏 "載入中..." 的文字
-//       // setTimeout(() => {
-//       //   document.getElementById('recaptcha-loading').style.display = 'none';
-//       // }, 1500);
-//       });
-// });
+    grecaptcha.ready(() => {
+      // 初始化新的 reCAPTCHA widget
+      recaptchaElements.forEach(element => {
+        grecaptcha.render(element, {
+          sitekey: element.getAttribute('data-sitekey'),
+          theme: element.getAttribute('data-theme'),
+          size: element.getAttribute('data-size'),
+          callback: element.getAttribute('data-callback'),
+          'expired-callback': element.getAttribute('data-expired-callback'),
+          'error-callback': element.getAttribute('data-error-callback')
+        });
+        // 隱藏 "載入中..." 的文字
+        // document.getElementById('recaptcha-loading').style.display = 'none';
+      // // 延遲 2 秒後隱藏 "載入中..." 的文字
+      // setTimeout(() => {
+      //   document.getElementById('recaptcha-loading').style.display = 'none';
+      // }, 1500);
+      });
+      setTimeout(() => {
+        document.getElementById('recaptcha-loading').style.display = 'none';
+      }, 1500);
+});
 
   })
     .catch(error => {
