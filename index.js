@@ -441,25 +441,25 @@ fetch('https://duncanikt.ddns.net/sensitive-info', {
       index_js06 = data.index_js06;
       index_js07 = data.index_js07;
     // 重新加載 Google reCAPTCHA
-    grecaptcha.ready(() => {
-      // 初始化新的 reCAPTCHA widget
-      recaptchaElements.forEach(element => {
-        grecaptcha.render(element, {
-          sitekey: element.getAttribute('data-sitekey'),
-          theme: element.getAttribute('data-theme'),
-          size: element.getAttribute('data-size'),
-          callback: element.getAttribute('data-callback'),
-          'expired-callback': element.getAttribute('data-expired-callback'),
-          'error-callback': element.getAttribute('data-error-callback')
-        });
-        // 隱藏 "載入中..." 的文字
-        document.getElementById('recaptcha-loading').style.display = 'none';
-      // // 延遲 2 秒後隱藏 "載入中..." 的文字
-      // setTimeout(() => {
-      //   document.getElementById('recaptcha-loading').style.display = 'none';
-      // }, 1500);
-      });
-});
+//     grecaptcha.ready(() => {
+//       // 初始化新的 reCAPTCHA widget
+//       recaptchaElements.forEach(element => {
+//         grecaptcha.render(element, {
+//           sitekey: element.getAttribute('data-sitekey'),
+//           theme: element.getAttribute('data-theme'),
+//           size: element.getAttribute('data-size'),
+//           callback: element.getAttribute('data-callback'),
+//           'expired-callback': element.getAttribute('data-expired-callback'),
+//           'error-callback': element.getAttribute('data-error-callback')
+//         });
+//         // 隱藏 "載入中..." 的文字
+//         document.getElementById('recaptcha-loading').style.display = 'none';
+//       // // 延遲 2 秒後隱藏 "載入中..." 的文字
+//       // setTimeout(() => {
+//       //   document.getElementById('recaptcha-loading').style.display = 'none';
+//       // }, 1500);
+//       });
+// });
 
   })
     .catch(error => {
