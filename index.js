@@ -407,8 +407,8 @@ if (passwordInput.type === 'password') {
 
 
 // 更新 recaptcha 的 data-sitekey 屬性
+const recaptchaElements = document.querySelectorAll('.g-recaptcha');
 const updateRecaptchaSitekey = (sitekey) => {
-  const recaptchaElements = document.querySelectorAll('.g-recaptcha');
   recaptchaElements.forEach(element => {
     element.setAttribute('data-sitekey', sitekey);
   });
