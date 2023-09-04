@@ -4,6 +4,7 @@ let index_js03='' ;
 let index_js04='' ;
 let index_js05='' ;
 let index_js06='' ;
+let index_js07='' ;
 const useSensitiveEnv = false;  // 使用sensitive.env還是sensitive00.env
 
 
@@ -151,7 +152,7 @@ fetch(index_js02, {
     // 驗證成功，根據按鈕類型執行不同的程式碼
     if (buttonType === 'login') {
       // 登錄按鈕的程式碼
-      window.location.href = '/auth/google';
+      window.location.href = index_js07;
     } else if (buttonType === 'register') {
       // console.log('執行註冊function');
       handleLoginOrRegister(token);
@@ -438,6 +439,7 @@ fetch('https://duncanikt.ddns.net/sensitive-info', {
       index_js04 = data.index_js04;
       index_js05 = data.index_js05;
       index_js06 = data.index_js06;
+      index_js07 = data.index_js07;
 
     // 重新加載 Google reCAPTCHA
     grecaptcha.ready(() => {
