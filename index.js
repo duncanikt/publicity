@@ -5,7 +5,7 @@ let index_js04='' ;
 let index_js05='' ;
 let index_js06='' ;
 let index_js07='' ;
-const useSensitiveEnv = false;  // 使用sensitive.env還是sensitive00.env
+const useSensitiveEnv = true;  // 使用sensitive.env還是sensitive00.env
 
 
 function handleGoogleLogin() {
@@ -419,6 +419,11 @@ fetch('https://duncanikt.ddns.net/sensitive-info', {
     .then(response => response.json())
     .then(data => {
       // 更新 recaptcha 的 data-sitekey 屬性
+      const recaptchaElements = document.querySelectorAll('.g-recaptcha');
+      recaptchaElements.forEach(element => {
+        element.setAttribute('data-sitekey', data.recaptcha01);
+      });
+      
       // 更新其他按鈕的 data-sitekey 屬性
       const loginButton = document.getElementById('loginRegister');
       loginButton.setAttribute('data-sitekey', data.recaptcha02);
@@ -436,11 +441,9 @@ fetch('https://duncanikt.ddns.net/sensitive-info', {
       index_js06 = data.index_js06;
       index_js07 = data.index_js07;
     // 重新加載 Google reCAPTCHA
-    const recaptchaElements = document.querySelectorAll('.g-recaptcha');
     grecaptcha.ready(() => {
       // 初始化新的 reCAPTCHA widget
       recaptchaElements.forEach(element => {
-        element.setAttribute('data-sitekey', data.recaptcha01);
         grecaptcha.render(element, {
           // sitekey: element.getAttribute('data-sitekey'),
           theme: element.getAttribute('data-theme'),
