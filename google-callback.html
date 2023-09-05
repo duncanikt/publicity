@@ -12,7 +12,7 @@
     // console.log('Author 授權碼:', authorizationCode);
 
     // 將授權碼發送給後端
-    fetch('https://duncanikt.ddns.net/auth/google/callback', {
+    fetch('/auth/google/callback', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
