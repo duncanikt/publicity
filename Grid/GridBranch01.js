@@ -3,7 +3,7 @@ let GridBranch01_js02='' ;
 let GridBranch01_js03='' ;
 let GridBranch01_js04='' ;
 let GridBranch01_js05='' ;
-const useSensitiveEnv = true;  // 使用sensitive.env還是sensitive00.env
+const useSensitiveEnv = window.useSensitiveEnv;  // 使用sensitive.env還是sensitive00.env
 
 
   var lastDoubleClickedRow ;     // 用於雙擊和單擊修改按鈕交互關聯
