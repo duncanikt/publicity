@@ -9,7 +9,7 @@ window.useSensitiveEnv = true;  // 使用sensitive.env還是sensitive00.env
 
 
 function handleGoogleLogin() {
-  window.location.href = 'https://duncanikt.ddns.net/auth/google/callback';
+  window.location.href = '/auth/google/callback';
 }
 
 let verifyResult; //判斷使用者是否已經驗證了。
@@ -416,7 +416,7 @@ const updateRecaptchaSitekey = (sitekey) => {
 
 
 // 在頁面載入時從後端取得敏感訊息
-fetch('https://duncanikt.ddns.net/sensitive-info', {
+fetch('/sensitive-info', {
   method: 'POST', // 使用POST方法傳遞參數
   headers: {
     'Content-Type': 'application/json',
