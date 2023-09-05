@@ -3,7 +3,7 @@ let GridBranch01Detail_js02='' ;
 let GridBranch01Detail_js03='' ;
 let GridBranch01Detail_js04='' ;
 let GridBranch01Detail_js05='' ;
-const useSensitiveEnv = false;  // 使用sensitive.env還是sensitive00.env
+const useSensitiveEnv = window.useSensitiveEnv;  // 使用sensitive.env還是sensitive00.env
 
 
   var Master; // 定義全域變數
