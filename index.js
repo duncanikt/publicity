@@ -1,3 +1,6 @@
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
 let index_js01='' ;
 let index_js02='' ;
 let index_js03='' ;
