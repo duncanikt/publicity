@@ -449,7 +449,7 @@ fetch('https://duncanikt.ddns.net/sensitive-info', {
       // 初始化新的 reCAPTCHA widget
       recaptchaElements.forEach(element => {
         grecaptcha.render(element, {
-          // sitekey: element.getAttribute('data-sitekey'),
+          sitekey: element.getAttribute('data-sitekey'),
           theme: element.getAttribute('data-theme'),
           size: element.getAttribute('data-size'),
           callback: element.getAttribute('data-callback'),
