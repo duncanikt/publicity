@@ -444,17 +444,6 @@ fetch('https://duncanikt.ddns.net/sensitive-info', {
       index_js05 = data.index_js05;
       index_js06 = data.index_js06;
       index_js07 = data.index_js07;
-
-
-  })
-    .catch(error => {
-      console.error('發生錯誤:', error);
-    });
-
-
-
-    window.onload = function() {
-      // 在這裡初始化 reCAPTCHA
       // 重新加載 Google reCAPTCHA
       grecaptcha.ready(() => {
         // 初始化新的 reCAPTCHA widget
@@ -476,7 +465,12 @@ fetch('https://duncanikt.ddns.net/sensitive-info', {
         // }, 1000);
         });
       });
-    };
+
+  })
+    .catch(error => {
+      console.error('發生錯誤:', error);
+    });
+
 
 
     
