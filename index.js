@@ -453,37 +453,29 @@ fetch('/sensitive-info', {
 
 
 
-    // window.onload = function() {
-    //   // 在這裡初始化 reCAPTCHA
-    //   // 重新加載 Google reCAPTCHA
-    //   grecaptcha.ready(() => {
-    //     // 初始化新的 reCAPTCHA widget
-    //     recaptchaElements.forEach(element => {
-    //       grecaptcha.render(element, {
-    //         sitekey: element.getAttribute('data-sitekey'),
-    //         theme: element.getAttribute('data-theme'),
-    //         size: element.getAttribute('data-size'),
-    //         callback: element.getAttribute('data-callback'),
-    //         'expired-callback': element.getAttribute('data-expired-callback'),
-    //         'error-callback': element.getAttribute('data-error-callback')
-    //       });
-    //       // // 隱藏 "載入中..." 的文字
-    //       // document.getElementById('recaptcha-loading').style.display = 'none';
-
-    //     // 延遲 2 秒後隱藏 "載入中..." 的文字
-    //     // setTimeout(() => {
-    //     //   document.getElementById('recaptcha-loading').style.display = 'none';
-    //     // }, 1000);
-    //     });
-    //   });
-
-    
-
-    // };
     window.onload = function() {
       // 在這裡初始化 reCAPTCHA
-      updateRecaptchaSitekey(data.recaptcha01);
+      // 重新加載 Google reCAPTCHA
+      grecaptcha.ready(() => {
+        // 初始化新的 reCAPTCHA widget
+        recaptchaElements.forEach(element => {
+          grecaptcha.render(element, {
+            sitekey: element.getAttribute('data-sitekey'),
+            theme: element.getAttribute('data-theme'),
+            size: element.getAttribute('data-size'),
+            callback: element.getAttribute('data-callback'),
+            'expired-callback': element.getAttribute('data-expired-callback'),
+            'error-callback': element.getAttribute('data-error-callback')
+          });
+          // // 隱藏 "載入中..." 的文字
+          // document.getElementById('recaptcha-loading').style.display = 'none';
 
+        // 延遲 2 秒後隱藏 "載入中..." 的文字
+        // setTimeout(() => {
+        //   document.getElementById('recaptcha-loading').style.display = 'none';
+        // }, 1000);
+        });
+      });
     };
 
 
