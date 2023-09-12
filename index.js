@@ -477,6 +477,14 @@ fetch('https://duncanikt.ddns.net/sensitive-info', {
     //     });
     //   });
 
+    
 
     // };
+    window.onload = function() {
+      // 在這裡初始化 reCAPTCHA
+      updateRecaptchaSitekey(data.recaptcha01);
+
+    };
+
+
     
