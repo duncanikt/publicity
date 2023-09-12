@@ -1,6 +1,3 @@
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
-
 let index_js01='' ;
 let index_js02='' ;
 let index_js03='' ;
@@ -429,10 +426,7 @@ fetch('https://duncanikt.ddns.net/sensitive-info', {
     .then(response => response.json())
     .then(data => {
       // 更新 recaptcha 的 data-sitekey 屬性
-      const recaptchaElements = document.querySelectorAll('.g-recaptcha');
-      recaptchaElements.forEach(element => {
-        element.setAttribute('data-sitekey', data.recaptcha01);
-      });
+      updateRecaptchaSitekey(data.recaptcha01);
       
       // 更新其他按鈕的 data-sitekey 屬性
       const loginButton = document.getElementById('loginRegister');
