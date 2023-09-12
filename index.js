@@ -458,10 +458,11 @@ fetch('https://duncanikt.ddns.net/sensitive-info', {
         });
         // // 隱藏 "載入中..." 的文字
         // document.getElementById('recaptcha-loading').style.display = 'none';
+
       // 延遲 2 秒後隱藏 "載入中..." 的文字
-      setTimeout(() => {
-        document.getElementById('recaptcha-loading').style.display = 'none';
-      }, 1000);
+      // setTimeout(() => {
+      //   document.getElementById('recaptcha-loading').style.display = 'none';
+      // }, 1000);
       });
 });
 
