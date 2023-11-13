@@ -5,4 +5,6 @@
 2.增刪查改，master-detail表格。  
 
   
-此作品連結：https://duncanikt.github.io/publicity/
+此作品連結：
+1.github https://duncanikt.github.io/publicity/
+2.架設在aws https://duncanikt.ddns.net/frontend/
