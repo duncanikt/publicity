@@ -8,5 +8,5 @@
 
 此作品前端連結：  
 github- https://duncanikt.github.io/publicity/  
-aws- https://duncanikt.ddns.net/frontend  
-兩個連結使用的程式碼是相同的，aws多了練習SSL憑證等等was功能。
+AWS- https://duncanikt.ddns.net/frontend  
+兩個連結使用的程式碼是相同的，AWS多了練習SSL憑證、AWS架設伺服器經驗。
