@@ -11,7 +11,7 @@ GitHub：https://github.com/duncanikt
 5.Google reCAPTCHA防機器人功能。  
   
 作品連結：  
-GitHub Pages- https://duncanikt.github.io/publicity  （目前未付費停運，過往錄製畫面https://www.youtube.com/watch?v=SDXKXRizpwU）
+GitHub Pages- https://duncanikt.github.io/publicity  （目前未付費停運，過往錄製畫面https://www.youtube.com/watch?v=SDXKXRizpwU ）
 
 AWS Server- https://duncanikt.ddns.net/frontend  （目前未付費停運）
 
